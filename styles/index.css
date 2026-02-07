@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+::-webkit-scrollbar {display: none}
+::selection {background: #7b3ff27c}
+
+:root {
+    --color00: #fff;
+    --color01: #7B3FF2;
+    --bgColor01: #000;
+    --bgColor02: #121212;
+    --bgColor02: #232323;
+
+    --fontText: 'Archivo';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    color: var(--color00);
+    font: 0.95em var(--fontText);
+    text-decoration: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    border: 0;
+}
+
+body {
+    background: var(--bgColor01);
+    width: 100dvw; height: 100dvh;
+}
+
+
+/* --- main config ------ */
+
+
+@media screen and (min-width: 768px) {
+
+}
