@@ -4,9 +4,8 @@
 ::selection {background: #7b3ff27c}
 
 :root {
-    --color01: #7B3FF2;
-    --color02: #00C0E8;
-    --color03: #FF383C;
+    --mainColor: #7B3FF2;
+    --color00: #FFF;
     --bgColor01: #000;
     --bgColor02: #121212;
     --bgColor02: #232323;
@@ -14,12 +13,18 @@
     --fontText: 'Archivo';
 }
 
+/*
+    --color01: #7B3FF2;
+    --color02: #00C0E8;
+    --color03: #FF383C
+*/
+
 * {
     margin: 0;
     padding: 0;
 
-    color: var(--corBranco);
-    font: 0.95em var(--fontText);
+    color: var(--color00);
+    font-family: var(--fontText);
     text-decoration: none;
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -28,12 +33,48 @@
 
 body {
     background: var(--bgColor01);
-    width: 100dvw; height: 100dvh;
+    width: 85dvw; height: 100dvh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 
 /* --- main config ------ */
 
-@media screen and (min-width: 768px) {
+p {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
 
+a {
+    background: var(--mainColor);
+    width: fit-content;
+    padding: 10px 20px;
+}
+
+.lightbar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 100%;
+
+    background: var(--mainColor);
+    box-shadow: 0px 0px 10px var(--mainColor);
+}
+
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    p {
+        font-size: 2em;
+    }
+
+    a {
+        transform: scale(1.2);
+    }
 }

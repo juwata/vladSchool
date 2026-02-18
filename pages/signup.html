@@ -8,7 +8,40 @@
     <title>VladSchool | Cadastro</title>
 </head>
 <body>
-    
+    <section>
+        <div>
+            <h1>Cadastro</h1>
+            <p>seja bem vindo à VladSchool</p>
+        </div>
+        <a href="login.html" class="signup">já tem cadastro? faça login</a>
+    </section>
+
+    <form method="post">
+        <div>
+            <label for="iName">nome</label>
+            <input type="text" id="iName" placeholder="nome e sobrenome" required autocomplete="name" autofocus>
+        </div>
+
+        <div>
+            <label for="iReg">matrícula</label>
+            <input type="text" id="iReg" placeholder="xxxxxxx" required>
+        </div>
+
+        <div>
+            <label for="iEmail">email</label>
+            <input type="email" id="iEmail" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+
+        <div>
+            <label for="iPasswd">senha</label>
+            <input type="password" id="iPasswd" placeholder="senha" required autocomplete="new-password" >
+        </div>
+
+        <div>
+            <input type="submit" value="logar">
+        </div>
+    </form>
+
     <script src="/scripts/forms.js"></script>
 </body>
 </html>

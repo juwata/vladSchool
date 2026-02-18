@@ -4,11 +4,11 @@
 ::selection {background: #7b3ff27c}
 
 :root {
-    --color00: #fff;
+    --color00: #FFF;
     --color01: #7B3FF2;
     --bgColor01: #000;
     --bgColor02: #121212;
-    --bgColor02: #232323;
+    --bgColor03: #232323;
 
     --fontText: 'Archivo';
 }
@@ -18,22 +18,348 @@
     padding: 0;
 
     color: var(--color00);
-    font: 0.95em var(--fontText);
+    font: 1em var(--fontText);
     text-decoration: none;
     scroll-behavior: smooth;
     box-sizing: border-box;
     border: 0;
+    list-style: none;
 }
 
 body {
     background: var(--bgColor01);
     width: 100dvw; height: 100dvh;
+    overflow-x: hidden;
 }
+
+a {
+    color: var(--color01);
+    transition: 500ms;
+}
+
+h1, h2, h3 {font-weight: 800}
 
 
 /* --- main config ------ */
 
+header {
+    position: fixed;
+    width: 100dvw;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header h1 {
+    font-size: 1.3rem;
+}
+
+#btLogin {
+    padding: 5px 15px;
+    background: var(--color01);
+    color: var(--color00);
+}
+
+
+
+
+
+section {
+    width: 90dvw;
+    height: 100dvh;
+    margin: 0 auto;
+}
+
+section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+
+
+
+#screen01 {
+    display: grid;
+    gap: 10px;
+}
+
+#screen01 p {
+    background: #120924;
+    color: #7B3FF2;
+    border: 1px solid var(--color01);
+    width: fit-content;
+    padding: 10px 15px;
+    margin-top: 150px;
+    margin-bottom: 10px;
+}
+
+#screen01 img {
+    width: 100%;
+}
+
+
+
+
+
+#screen02 {
+    width: 100dvw;
+    height: 100%;
+    background: var(--bgColor02);
+    display: grid;
+    gap: 35px;
+    padding: 60px 0 60px 0;
+}
+
+#screen02 > div:first-child {
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2rem;
+}
+
+#screen02 article {
+    background: #0A0A0A;
+    border: 2px solid #232323;
+    margin: 0 auto;
+    max-width: 70dvw;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    transition: 500ms;
+}
+
+#screen02 .dif {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 30px;
+}
+
+#screen02 article p {
+    color: #CFCFCF;
+}
+
+#screen02 article img {
+    transform: scale(0.7);
+}
+
+#screen02 article div {
+    background: #1B122D;
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color01);
+}
+
+#screen02 article:hover {
+    border: 2px solid var(--color01);
+    box-shadow: 0 16px 48px rgba(123, 63, 242, 0.2);
+
+    transform: translateY(-8px);
+}
+
+
+
+
+
+#screen03 {
+    padding: 50px 0 50px 0;
+    margin-bottom: -20px;
+}
+
+#screen03 img {
+    margin-top: 50px;
+    width: 80dvw;
+}
+
+
+
+
+
+footer {
+    background: var(--bgColor03);
+    height: 75dvh;
+    margin-top: 50px;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+footer li {
+    margin-bottom: 15px;
+}
+
+footer li a {
+    color: var(--color00);
+}
+
+footer li a:hover {
+    color: var(--color01);
+}
+
+.lightbar {
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    width: 100dvw;
+
+    background: var(--color01);
+    box-shadow: 0px 0px 10px var(--color01);
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    header label {
+        font-size: 3rem;
+    }
+    
+    header ul {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 1px;
+        padding: 15px;
+        background: rgba(123, 63, 242, 0.15);
+    }
+    
+    :has(#iNav:checked) header ul {
+        display: block;
+    }
+    
+    header li a {font-weight: 300}
+    header li:not(:first-child) {margin-top: 8px}
+    
+    header li:last-child {
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
+}
+
+
+
+
 
 @media screen and (min-width: 768px) {
+    h1, h2, h3, p {transform: scale(1.2)}
 
+
+    header {
+        padding: 40px;
+    }
+
+    header > div {
+        gap: 20px;
+    }
+
+    header label {
+        display: none;
+    }
+
+    header ul {
+        display: flex;
+        gap: 30px;
+    }
+
+    header a {
+        color: var(--color00);
+    }
+
+    #btLogin {
+        padding: 10px 20px;
+    }
+
+
+
+
+
+    section {
+        width: 75dvw;
+    }
+
+
+
+
+
+    #screen01 {
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+        gap: 100px;
+    }
+
+    #screen01 h1 {
+        font-size: 55px;
+        margin-top: 40px;
+    }
+
+    #screen01 div {
+        margin-top: -100px;
+    }
+
+
+
+
+
+    #screen02 {
+        padding: 100px 0;
+        height: 65dvh;
+    }
+
+    #screen02 .dif {
+        grid-template-columns: repeat(3, 1fr);
+        width: 70dvw;
+        margin: 0 auto;
+    }
+
+    #screen02 article {
+        width: 300px;
+        padding: 45px;
+    }
+
+
+
+
+
+    #screen03 {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #screen03 h2 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+    #screen03 div {
+        width: 500px;
+    }
+
+    #screen03 img {
+        width: 402px;
+        height: 700px
+    }
+
+
+
+
+    
+    footer {
+        height: 50dvh;
+        grid-template-columns: 1fr 1fr;
+    }
 }
