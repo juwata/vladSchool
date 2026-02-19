@@ -1,4 +1,5 @@
 let career = 'aluno'
+let nome = "Ana Souza"
 let color
 
 if (career === 'professor') {
@@ -13,3 +14,4 @@ if (career === 'professor') {
 
 document.documentElement.style.setProperty('--mainColor', color)
 document.getElementById('roleplay').textContent = career
+document.getElementById('nome').textContent = nome
