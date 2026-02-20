@@ -1,5 +1,6 @@
 import {  logarAluno, exibirAlunoPorEmail } from './code/aluno/ConecctionAluno.js';
 import {  logarProfessor, exibirProfessorPorEmail } from './code/professor/ConecctionProfessor.js';
+import {  logarAdm, exibirAdmPorEmail } from './code/adm/ConecctionAdm.js';
 
 // limpampando o localStorage caso volte para a página de login
 localStorage.clear();
@@ -23,6 +24,8 @@ form.addEventListener('submit', async (event) => {
     // chamando as duas funções de login para qual vai ser o tipo
     const loginAluno = await logarAluno(email,senha)
     const loginProfessor = await logarProfessor(email,senha)
+    const loginAdm = await logarAdm(email,senha)
+    console.log(loginAdm)
     
     // verifica se o login como o aluno da certo
     if (loginAluno) { 
@@ -50,7 +53,20 @@ form.addEventListener('submit', async (event) => {
 
         // redireciona para a página de welcome
         window.location.href = 'welcome.html';
-    }else {
+    } else if(loginAdm) {
+
+        // se der certo pega os dados dele através do email
+        const adm = await exibirAdmPorEmail(email)
+
+
+        // seta no localStorage algumas variaveis que serão útil para chamar funções e na pagina de welcome
+        localStorage.setItem('nome', adm[0].nome);
+        localStorage.setItem('tipo', 'adm');
+
+        // redireciona para a página de welcome
+        window.location.href = 'welcome.html';
+
+    } else {
         // se nenhum login deu certo retorna um allert 
         alert("Usuário ou senha inválidos!");
     }
