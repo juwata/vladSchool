@@ -1,4 +1,4 @@
-import Disciplinas from "./Disciplina.js"
+import Disciplinas from "../model/Disciplina.js"
 
 const url = 'http://localhost:8080/TrabalhoDSV2/';
 
