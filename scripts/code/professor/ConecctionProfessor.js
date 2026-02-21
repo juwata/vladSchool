@@ -137,4 +137,52 @@ async function exibirProfessorPorEmail(email=String) {
     }
     
 }
-export { exibirProfessorPorId, logarProfessor, exibirProfessorPorEmail};
+async function listarProfessores() {
+    try {
+        //constante do tipo de busca
+        const tipo = "listar";
+        //cria a url com os parametros, e usa fetch para fazer a requisição get
+        const resposta = await fetch(`${url}app/professor/exibir?tipo=${tipo}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        //verifica se a resposta foi ok
+        if (!resposta.ok) {
+            throw new Error(`Erro HTTP: ${resposta.status}`);
+        }
+
+        //converte a resposta para json
+        const dadosResposta = await resposta.json();
+        //separa da resposta de sucesso para resposta de professor
+        const professoresArray = dadosResposta.professores;
+
+
+        if (Array.isArray(professoresArray)) {
+            // lista para armazenar objetos professores
+            const listaProfessores = [];
+            //pega o lenght da respsota
+            const length = professoresArray.length;
+            //for de respostas
+            for (let i = 0; i < length; i++) {
+
+                //converte cada json da resposta para um objeto professor usando o metodo deJson da classe Professor, e adiciona na lista de professores
+                const professorJson = professoresArray[i];
+                //converte para objeto
+                const professorObj = Professor.deJson(professorJson);
+                //coloca na lista
+                listaProfessores.push(professorObj);
+
+            }
+            //retorna lista de retorna
+            return listaProfessores;
+
+        }
+    } catch (e) {
+        console.error('Erro ao buscar aluno por nome:', e);
+    }
+    
+}
+export { exibirProfessorPorId, logarProfessor, exibirProfessorPorEmail, listarProfessores};

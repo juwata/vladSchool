@@ -23,9 +23,9 @@ class Professor extends Usuario {
             const dadosProfessor = jsonDoc.dados_professor;
 
             const idProfessor = dadosProfessor.id_professor
-            const disciplinasLecionadas = dadosProfessor.disciplinasLecionadas
+            const disciplinasLecionadas = dadosProfessor.disciplinaLecionadas
 
-
+            
             const professor = new Professor(
                 nome, nomeUsuario, senha, tipo, email, id ,
                 idProfessor,disciplinasLecionadas

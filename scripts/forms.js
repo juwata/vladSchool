@@ -25,7 +25,6 @@ form.addEventListener('submit', async (event) => {
     const loginAluno = await logarAluno(email,senha)
     const loginProfessor = await logarProfessor(email,senha)
     const loginAdm = await logarAdm(email,senha)
-    console.log(loginAdm)
     
     // verifica se o login como o aluno da certo
     if (loginAluno) { 
@@ -58,14 +57,13 @@ form.addEventListener('submit', async (event) => {
         // se der certo pega os dados dele através do email
         const adm = await exibirAdmPorEmail(email)
 
-        console.log(adm)
         // seta no localStorage algumas variaveis que serão útil para chamar funções e na pagina de welcome
         localStorage.setItem('admId',adm[0].id)
         localStorage.setItem('nome', adm[0].nome);
         localStorage.setItem('tipo', 'adm');
 
         // redireciona para a página de welcome
-        // window.location.href = 'welcome.html';
+        window.location.href = 'welcome.html';
 
     } else {
         // se nenhum login deu certo retorna um allert 
