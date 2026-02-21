@@ -1,9 +1,10 @@
 // pegando o id do aluno que foi armazenado no local storage no forms.js
 const idSalvoAluno = localStorage.getItem('alunoId');
 const idSalvoProfessor = localStorage.getItem('professorId');
+const idSalvoAdm = localStorage.getItem('admId');
 
 // verificando se o id realemte esta lá e voltando para a pagina de login se não estiver 
-if (!(!idSalvoAluno || idSalvoAluno === "undefined") && !(!idSalvoProfessor || idSalvoProfessor === "undefined")) {
+if (!(!idSalvoAluno || idSalvoAluno === "undefined") && !(!idSalvoProfessor || idSalvoProfessor === "undefined") && !(!idSalvoAdm || idSalvoAdm === "undefined")) {
     console.error("ID não encontrado! Voltando para o login...");
     window.location.href = "login.html";
 } 
