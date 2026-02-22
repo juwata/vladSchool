@@ -131,7 +131,7 @@ for (const [materia,nota] of Object.entries(dicionarioNotas)){
 
             tdNota2.textContent = nota.getNota2().toFixed(1); 
 
-            tdMedia.textContent = (nota.getNota1() + nota.getNota2())/2 .toFixed(1); 
+            tdMedia.textContent = ((nota.getNota1() + nota.getNota2())/2).toFixed(1); 
 
             if (tdMedia.textContent >= 7) {
                 tdSituacao.textContent = 'Aprovado'

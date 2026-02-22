@@ -13,7 +13,7 @@ if (!idSalvo || idSalvo === "undefined") {
 const nomePagina = document.querySelector('.asideHeader div p')
 nomePagina.innerText = localStorage.getItem('nome') 
 
-let indice = 1
+let indice = 0
 
 
 const listaObservacao = []
