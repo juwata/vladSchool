@@ -1,18 +1,6 @@
 import { exibirAlunoPorIndex } from "../code/aluno/ConecctionAluno.js";
 import AlunoAdm from "../code/model/AlunoAdm.js";
 
-// instanciando um dicionario com o idDisciplina e a sua respectiva disciplina
-const discionarioDiscplina = {
-    1:"Teoria da Conspiração",
-    2:"Programação Orientada a Apostas",
-    3:"Lavagem de Dinheiro",
-    4:"Matemática",
-    5:"Português",
-    6:"História",
-    7:"Ciêcias",
-    8:"Informática"
-}
-
 // pegando o id do adm
 const idSalvo = localStorage.getItem('admId');
 const idDisciplina = localStorage.getItem('idDisciplina');
@@ -78,7 +66,7 @@ async function carregarDados() {
     renderizarTabela("todos");    
 }
 
-function renderizarTabela(turmaFiltrada){
+function renderizarTabela(turmaFiltrada, nomeFiltrado = ""){
     // puxando a tabela em que as notas serão colocadas
     const tabela = document.getElementsByTagName('table');
 
@@ -90,7 +78,10 @@ function renderizarTabela(turmaFiltrada){
     for (const [nome,infos] of Object.entries(dicionarioAlunos)){
         const turmaDoAluno = infos.getTurma();
 
-        if (turmaFiltrada !== "todos" && turmaDoAluno !== turmaFiltrada) {
+        const passouTurma = (turmaFiltrada === "todos" || turmaFiltrada === "Turmas" || turmaDoAluno === turmaFiltrada);
+        const passouNome = nome.toLowerCase().includes(nomeFiltrado.toLowerCase());
+
+        if (!passouTurma || !passouNome) {
             continue;
         }
 
@@ -174,6 +165,7 @@ function renderizarTabela(turmaFiltrada){
 
 function preencherFiltroTurmas(){
 
+    const inputNome = document.getElementById('nome do aluno');
     const opcoesTurmas = document.getElementById('sTurmas')
 
     opcoesTurmas.innerHTML = '<option selected hidden>Turmas</option><option value="todos">Todas as Turmas</option>'
@@ -193,10 +185,13 @@ function preencherFiltroTurmas(){
         opcoesTurmas.appendChild(opcao)
     }
 
+    inputNome.addEventListener('input', () => {
+        renderizarTabela(opcoesTurmas.value, inputNome.value);
+    });
+
     opcoesTurmas.addEventListener('change', (event) => {
         const turmaSelecionada = event.target.value;
-        console.log("Filtrando por:", turmaSelecionada); 
-        renderizarTabela(turmaSelecionada);
+        renderizarTabela(turmaSelecionada, inputNome.value);
     });
 }
 
