@@ -185,9 +185,21 @@ function preencherFiltroTurmas(){
         opcoesTurmas.appendChild(opcao)
     }
 
-    inputNome.addEventListener('input', () => {
+    inputNome.addEventListener('input', (event) => {
+
         renderizarTabela(opcoesTurmas.value, inputNome.value);
+
     });
+
+
+    inputNome.addEventListener('keydown', (event) => {
+
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+        }
+        
+    });
+
 
     opcoesTurmas.addEventListener('change', (event) => {
         const turmaSelecionada = event.target.value;
