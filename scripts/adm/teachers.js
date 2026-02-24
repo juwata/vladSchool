@@ -32,46 +32,64 @@ const listaProfessores = await listarProfessores()
 // pegando a tabela que fica os professores
 const tabelaProfessor = document.getElementsByClassName('prof')
 
-for (const professor of listaProfessores){
+// pegando o input de busca
+const inputProfessor = document.getElementById('inputProfessor');
 
-    // criando a linha que sera adicionada
-    const linha = document.createElement('tr')
+function renderizarTabela(listaProfessores){
 
-    // adicionando cada elemento daquela linha
-    const tdNome = document.createElement('td');
-    const tdDisciplina = document.createElement('td');
-    const tdEmail = document.createElement('td');
-    const tdSenha = document.createElement('td');
+    tabelaProfessor[0].innerHTML='<tr class="thead"><th>nome</th><th>disciplina</th><th>email</th></tr>'
 
-    // colocando o nome, o email e a senha do professor
-    tdNome.textContent = professor.nome
-    tdEmail.textContent = professor.email
-    tdSenha.textContent = professor.senha
+    for (const professor of listaProfessores){
 
-    // pegando quais as disciplinas lecionadas pelo professor
-    let disciplinas = ""
-
-    for (const id of professor.disciplinasLecionadas){
-
-        // pegando o nome da disciplina de acordo com aquele dicionario
-        const nomeDisciplina = discionarioDiscplina[id]
-
-        // adiconando na disciplina
-        disciplinas += nomeDisciplina + "<br>"
-
+        // criando a linha que sera adicionada
+        const linha = document.createElement('tr')
+    
+        // adicionando cada elemento daquela linha
+        const tdNome = document.createElement('td');
+        const tdDisciplina = document.createElement('td');
+        const tdEmail = document.createElement('td');
+    
+        // colocando o nome, o email e a senha do professor
+        tdNome.textContent = professor.nome
+        tdEmail.textContent = professor.email
+    
+        // pegando quais as disciplinas lecionadas pelo professor
+        let disciplinas = ""
+    
+        for (const id of professor.disciplinasLecionadas){
+    
+            // pegando o nome da disciplina de acordo com aquele dicionario
+            const nomeDisciplina = discionarioDiscplina[id]
+    
+            // adiconando na disciplina
+            disciplinas += nomeDisciplina + "<br>"
+    
+        }
+    
+        // colocando o nome da disciplina no td
+        tdDisciplina.innerHTML = disciplinas;
+    
+        // adicionando todos os tds nas linhas
+        linha.appendChild(tdNome)
+        linha.appendChild(tdDisciplina)
+        linha.appendChild(tdEmail)
+    
+        // adicionando a linha na tabela
+        tabelaProfessor[0].appendChild(linha)
     }
 
-    // colocando o nome da disciplina no td
-    tdDisciplina.innerHTML = disciplinas;
-
-    // adicionando todos os tds nas linhas
-    linha.appendChild(tdNome)
-    linha.appendChild(tdDisciplina)
-    linha.appendChild(tdEmail)
-    linha.appendChild(tdSenha)
-
-    // adicionando a linha na tabela
-    tabelaProfessor[0].appendChild(linha)
 }
+renderizarTabela(listaProfessores)
+
+
+inputProfessor.addEventListener('input', () => {
+    const termoBusca = inputProfessor.value.toLowerCase(); 
+
+    const professoresFiltrados = listaProfessores.filter(professor => 
+        professor.nome.toLowerCase().includes(termoBusca)
+    );
+
+    renderizarTabela(professoresFiltrados);
+});
 
 

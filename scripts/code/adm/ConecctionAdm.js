@@ -61,7 +61,7 @@ async function exibirAdmPorEmail(email=String) {
         //converte a resposta para json
         const dadosResposta = await resposta.json();
         //separa da resposta de sucesso para resposta de adm
-        const admArray = dadosResposta.adm;
+        const admArray = dadosResposta.adms;
 
 
         if (Array.isArray(admArray)) {

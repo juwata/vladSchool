@@ -9,6 +9,10 @@ if (!idSalvo || idSalvo === "undefined") {
     window.location.href = "../login.html";
 } 
 
+// colocando o nome do aluno na pagina
+const nomePagina = document.querySelector('.asideHeader div p')
+nomePagina.innerText = localStorage.getItem('nome')
+
 // pegando todas as divs que tem a escolhas da máteria
 const divsMaterias = document.querySelectorAll('.discipline section div')
 

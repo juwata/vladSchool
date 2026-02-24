@@ -197,7 +197,7 @@ function preencherFiltroTurmas(){
         if (event.key === 'Enter') {
             event.preventDefault(); 
         }
-        
+            
     });
 
 
