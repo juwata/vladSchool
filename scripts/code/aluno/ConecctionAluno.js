@@ -584,4 +584,4 @@ async function exibirAlunoPorMatricula(matricula=String) {
 
 }
 
-export { criarAluno, exibirAlunoPorIndex, exibirAlunoPorNome, exibirAlunoPorSerie, exibirAlunoPorStatus, deletarAluno, atualizarAluno, logarAluno, exibirAlunoPorId, adicionarObs, removerObs, atualizarObs, atualizarNota , exibirAlunoPorEmail};
+export { criarAluno, exibirAlunoPorIndex, exibirAlunoPorNome, exibirAlunoPorSerie, exibirAlunoPorStatus, deletarAluno, atualizarAluno, logarAluno, exibirAlunoPorId, adicionarObs, removerObs, atualizarObs, atualizarNota , exibirAlunoPorEmail, exibirAlunoPorMatricula};
