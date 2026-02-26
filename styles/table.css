@@ -100,7 +100,7 @@ aside section {
 
 
 
-form {
+header {
     display: flex;
     width: 100dvw;
     height: 90px;
@@ -114,7 +114,7 @@ input, select, option, button {height: 100%}
 
 select, option {color: var(--bgColor01);}
 
-form input {
+input {
     background: #0A0A0A;
     border: 2px solid var(--bgColor03);
     padding: 10px;
@@ -122,7 +122,7 @@ form input {
     transition: 500ms;
 }
 
-form input:focus {
+input:focus {
     border: 2px solid var(--mainColor);
     box-shadow: 0 16px 48px var(--mainColorT);
 }
@@ -232,6 +232,43 @@ tr:not(:first-child):hover * {
 }
 
 
+dialog {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--bgColor01);
+    border: 2px solid var(--bgColor02);
+    width: 70vw;
+    padding: 30px 20px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+dialog input, textarea {
+    background: #0A0A0A;
+    width: 100%;
+    padding: 15px 10px;
+}
+
+dialog input[type="submit"] {
+    background: var(--mainColor);
+    border: 0;
+}
+
+dialog::backdrop {
+    background: #000000bb;
+}
+
 
 @media screen and (min-width: 768px) {
     aside {
@@ -245,13 +282,13 @@ tr:not(:first-child):hover * {
 
     aside label img, .labelToggle {display: none}
 
-    :has(#iToggle:checked) table, :has(#iToggle:checked) form {width: 75dvw}
+    :has(#iToggle:checked) table, :has(#iToggle:checked) header {width: 75dvw}
 
-    form {
+    header {
         gap: 10px;
     }
 
-    form input {
+    header input {
         width: 100%;
     }
 
@@ -282,5 +319,9 @@ tr:not(:first-child):hover * {
         width: 250px;
         height: 150px;
         margin-bottom: 12px;
+    }
+
+    dialog {
+        width: 30vw;
     }
 }
