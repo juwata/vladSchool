@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap');
+
+.overlayEditarExcluir {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popupEditarExcluir,
+.popupEditar {
+    background: black;
+    border: 2px solid cyan;
+    padding: 50px;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.popupEditarExcluir p,
+.popupEditar p {
+    font-size: 18px;
+    margin: 0;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+
+
+.btn img {
+    width: 13px;
+}
+
+.action span {
+    font-size: 15px;
+    color: white;
+}
+
+.btn {
+
+    position: relative !important; 
+    top: auto !important;
+    right: auto !important;
+    margin: 10px;
+    padding: 17px 22px;
+    background-color: #232323;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
