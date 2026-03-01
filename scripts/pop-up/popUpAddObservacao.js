@@ -1,8 +1,9 @@
-import { adicionarObs, exibirAlunoPorNome } from "../code/aluno/ConecctionAluno.js";
+import { adicionarObs, exibirAlunoPorId } from "../code/aluno/ConecctionAluno.js";
 import Observacoes from "../code/model/Observacoes.js";
-import { renderizarObsevacoes } from "../prof/observations.js";
 
 const idSalvo = Number(localStorage.getItem('professorId'));
+const alunoSelecinado = localStorage.getItem('alunoSelecionado')
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const openBtn = document.getElementById("openPopupAdd");
@@ -28,10 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const dados = new FormData(form);
 
         // pegando o nome digitado e a obsevacao escrita
-        const nome = dados.get('nomeAluno'); 
         const observacao = dados.get('obsevacao');
 
-        const alunoObsevacao = await exibirAlunoPorNome(nome)
+        const alunoObsevacao = await exibirAlunoPorId(alunoSelecinado)
 
 
         if (alunoObsevacao.length == 0 ){
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (sucesso.success){
                 alert("Observação adicionada com sucesso!")
-                renderizarObsevacoes()
+                window.location.href = 'observations.html'; 
 
             }else {
                 alert("Erro ao criar observação!")

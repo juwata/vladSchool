@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href="../../assets/icons/lamp-cyan.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../styles/observations.css">
     <link rel="stylesheet" href="../../styles/popUpAdd.css">
-    <link rel="stylesheet" href="../../styles/popUpEditarExcluir.css">
-    <script src="../../scripts/prof/observations.js" type="module" defer></script>
+    <link rel="stylesheet" href="../../styles/popUpEditarExcluir.css">  
+    <script src="../../scripts/stud/observations.js" type="module" defer></script>
     <script src="../../scripts/pop-up/popUpAddObservacao.js" type="module" defer></script>
     <script src="../../scripts/pop-up/popUpEditarExcluirObs.js" type="module" defer></script>
     <title>VladSchool</title>
@@ -31,12 +31,12 @@
 
         <nav>
             <h2>GERAL</h2>
-            <a href="students.html">
+            <a href="studentsNotas.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>alunos</p>
             </a>
             
-            <a href="observations.html" style="background-color: var(--mainColorT);">
+            <a href="studentsObservations.html" style="background-color: var(--mainColorT);">
                 <img src="../../assets/icons/aside.svg">
                 <p>observações</p>
             </a>
@@ -52,18 +52,17 @@
             <h1>VladSchool</h1>
         </section>
     </aside>
+
     <header>
         <label for="iToggle" class="labelToggle"><img src="../../assets/icons/menu.svg"></label>
         <button id="openPopupAdd">Adicionar</button>
     </header>
+
     <main>
     </main>
     <div class="overlayAdicionar" id="overlayAdicionar">
         <div class="popupAdicionar">
             <form>
-                <label for="nome">nome</label>
-                <input type="text" id="nome" name="nomeAluno" placeholder="nome do aluno">
-
                 <label for="obs">observação</label>
                 <textarea id="obs" name="obsevacao" placeholder="observação"></textarea>
 

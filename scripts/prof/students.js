@@ -137,6 +137,31 @@ async function iniciar() {
     adicionarForms(listaAlunos);
     renderizarAlunos(listaAlunos);
     filtrar(listaAlunos)
+    
 }
 
-iniciar()  
+iniciar() 
+const nomeLimpo = window.location.pathname.split("/").pop().replace(".html", "");
+console.log(nomeLimpo); // Exemplo: "grade"
+const main = document.querySelector('main');
+
+main.addEventListener('click', (e) => {
+    // Verifica se o clique foi em uma section ou dentro de uma
+    const section = e.target.closest('section');
+    
+    if (section) {
+        // Opcional: Salvar o ID do aluno que definimos no dataset.id
+        const alunoId = section.dataset.idAluno;
+        if (alunoId) {
+            localStorage.setItem('alunoSelecionado', alunoId);
+        }
+        const nomePagina = window.location.pathname.split("/").pop().replace(".html", "");
+        if (nomePagina=="studentsObservations"){
+            window.location.href = 'observations.html'; 
+
+        } else if(nomePagina=="studentsNotas"){
+            window.location.href = 'grade.html'; 
+            
+        }
+    }
+});

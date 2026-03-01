@@ -2,16 +2,27 @@ import {  exibirAlunoPorId } from '../code/aluno/ConecctionAluno.js';
 import { exibirProfessorPorId } from '../code/professor/ConecctionProfessor.js'
 
 // pegando o id do aluno que foi armazenado no local storage no forms.js
-const idSalvo = localStorage.getItem('alunoId');
+const acessoAluno = localStorage.getItem('alunoId')
+const alunoSelecinado = localStorage.getItem('alunoSelecionado')
+const acessoProfessor =  Number(localStorage.getItem('professorId'))
+const acessoAdm = localStorage.getItem('admId')
+
+const adm =  !acessoAdm || acessoAdm === "undefined"
+const professor = !acessoProfessor || acessoProfessor === "undefined"
+
+let aluno = {}
 
 // verificando se o id realemte esta lá e voltando para a pagina de login se não estiver 
-if (!idSalvo || idSalvo === "undefined") {
+if (!(!acessoAluno || acessoAluno === "undefined") || !adm || !professor) {
+    if (!adm || !professor){
+        aluno = await exibirAlunoPorId(alunoSelecinado);
+    } else if (!(!acessoAluno || acessoAluno === "undefined")){
+        aluno = await exibirAlunoPorId(acessoAluno);
+    }
+} else {
     console.error("ID não encontrado! Voltando para o login...");
     window.location.href = "../login.html";
-} 
-
-// puxando os dados do aluno
-const aluno = await exibirAlunoPorId("69977d14fb66d10cde847db4");
+}
 
 // colocando o nome do aluno na página
 const nomePagina = document.querySelector('.asideHeader div p')
@@ -25,6 +36,7 @@ for (const observacao of aluno[0].observacoes){
 
     // criando a section que representa a obsevação
     const section = document.createElement('section')
+    section.classList = 'openPopupExcEdit'
 
     // criando a div que fica o nome do professor
     const div = document.createElement('div')

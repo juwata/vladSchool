@@ -404,7 +404,7 @@ async function adicionarObs(obs=Observacoes, id=String) {
     const alunos = await exibirAlunoPorId(id);
     const aluno = alunos[0];    
     aluno.getObservacoes().push(obs);
-    await atualizarAluno(id, aluno);
+    return await atualizarAluno(id, aluno);
 }
 
 

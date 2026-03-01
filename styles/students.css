@@ -153,6 +153,7 @@ main section{
     padding: 30px;
     background: var(--bgColor02);
     margin-bottom: 40px;
+    cursor: pointer;
 }
 main section img{
     height: 15px;
