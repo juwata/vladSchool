@@ -4,7 +4,7 @@
 
 .card {
     padding: 20px 40px;
-    border: 1px solid cyan;
+    border: 1px solid var(--mainColor);
     border-radius: 6px;
     cursor: pointer;
 }
@@ -21,7 +21,7 @@
 }
 
 .popupAdicionar,.popupEditar {
-    border: 2px solid cyan;
+    border: 2px solid var(--mainColor);
     padding: 40px;
     border-radius: 8px;
     width: 420px;
@@ -72,7 +72,7 @@
     margin-top: 20px;
     align-self: center;
     padding: 10px 25px;
-    background: cyan;
+    background: var(--mainColor);
     border: none;
     color: black;
     cursor: pointer;

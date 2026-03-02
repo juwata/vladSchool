@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/icons/lamp-red.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../../styles/table.css">
-    <script src="../../scripts/adm/students.js" type="module" defer></script>
+    <link rel="stylesheet" href="../../styles/students.css">
+    <script type="module" src="../../scripts/prof/students.js"></script>
     <title>VladSchool</title>
     <style>
         :root {
@@ -27,21 +27,25 @@
 
         <nav>
             <h2>GERAL</h2>
-            <a href="discipline.html" style="background-color: var(--mainColorT);">
+            <a href="studentsNotas.html" >
                 <img src="../../assets/icons/aside.svg">
                 <p>alunos</p>
             </a>
-            
+            <a href="studentsObservations.html" style="background-color: var(--mainColorT);">
+                <img src="../../assets/icons/aside.svg">
+                <p>observações</p>
+            </a>
             <a href="teachers.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>professores</p>
             </a>
             
-            <a href="dashboard.html">
+            <a href="dashboard.html" >
                 <img src="../../assets/icons/aside.svg">
                 <p>dashboard</p>
             </a>
         </nav>
+
 
         <section class="asideFooter">
             <img src="../../assets/icons/lamp-red.svg">
@@ -50,25 +54,7 @@
     </aside>
 
     <main>
-        <form>
-            <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
-            <input type="text" id="nome do aluno" placeholder="nome do aluno">
-            <select id="sTurmas">
-            </select>
-        </form>
         
-        <table class="prof">
-            <tr class="thead">
-                <th>nome</th>
-                <th>turma</th>
-                <th>nota 01</th>
-                <th>nota 02</th>
-                <th>média</th>
-                <th>status</th>
-            </tr>
-            
-        </table>
     </main>
-
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/icons/lamp-red.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../styles/table.css">
-    <script src="../../scripts/adm/dicipline.js" type="module" defer></script>
+    <script src="../../scripts/stud/grade.js" type="module" defer></script>
     <title>VladSchool</title>
     <style>
         :root {
@@ -27,17 +27,20 @@
 
         <nav>
             <h2>GERAL</h2>
-            <a href="discipline.html" style="background-color: var(--mainColorT);">
+            <a href="studentsNotas.html" style="background-color: var(--mainColorT);"   >
                 <img src="../../assets/icons/aside.svg">
                 <p>alunos</p>
             </a>
-            
+            <a href="studentsObservations.html">
+                <img src="../../assets/icons/aside.svg">
+                <p>observações</p>
+            </a>
             <a href="teachers.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>professores</p>
             </a>
             
-            <a href="dashboard.html">
+            <a href="dashboard.html" >
                 <img src="../../assets/icons/aside.svg">
                 <p>dashboard</p>
             </a>
@@ -49,20 +52,20 @@
         </section>
     </aside>
 
-    <main class="discipline">
-        <label for="iToggle" class="labelToggle"><img src="../../assets/icons/menu.svg"></label>
-
-        <h1>Escolha a disciplina:</h1>
-        <section>
-            <div>Teoria da Conspiração</div>
-            <div>Programação Orientada a Apostas</div>
-            <div>Lavagem de dinheiro</div>
-            <div>Informática</div>
-            <div>Matemática</div>
-            <div>Português</div>
-            <div>História</div>
-            <div>Ciências</div>
-        </section>
+    <main>
+        <form>
+            <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
+        </form>
+        
+        <table>
+            <tr class="thead">
+                <th>matéria</th>
+                <th>nota 01</th>
+                <th>nota 02</th>
+                <th>média</th>
+                <th>status</th>
+            </tr>
+        </table>
     </main>
 </body>
 </html>

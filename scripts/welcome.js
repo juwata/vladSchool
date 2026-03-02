@@ -46,7 +46,7 @@ redirecionar.addEventListener('click', event => {
     } else if (career==='professor'){
         window.location.href = 'prof/studentsNotas.html'; 
     } else if (career==='adm'){
-        window.location.href = 'adm/discipline.html'; 
+        window.location.href = 'adm/studentsNotas.html'; 
     }
 
 })

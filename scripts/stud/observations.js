@@ -31,6 +31,7 @@ nomePagina.innerText = localStorage.getItem('nome')
 // pegando o local onde será colocado as observações
 const main= document.getElementsByTagName('main');
 
+
 // rodando cada das observações do aluno
 for (const observacao of aluno[0].observacoes){
 
@@ -48,7 +49,12 @@ for (const observacao of aluno[0].observacoes){
 
     // pegando os dados do professor para colocar no p dentro da div
     const dadosProfessor = await exibirProfessorPorId(observacao.idProfessor)
-    pNome.textContent = dadosProfessor[0].nome
+    console.log(dadosProfessor)
+    if (dadosProfessor.length === 0) {
+        pNome.textContent = 'Nicola Vlad'
+    } else {
+        pNome.textContent = dadosProfessor[0].nome
+    }
 
     // adicionando o h2 e p com o nome na div
     div.appendChild(h2)
@@ -62,6 +68,7 @@ for (const observacao of aluno[0].observacoes){
     section.appendChild(div)
     section.appendChild(pObservacao)
 
+    console.log(section)
     // adicioanando a tal observação
     main[0].appendChild(section)
 }

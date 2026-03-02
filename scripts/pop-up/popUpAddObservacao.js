@@ -3,6 +3,7 @@ import Observacoes from "../code/model/Observacoes.js";
 
 const idSalvo = Number(localStorage.getItem('professorId'));
 const alunoSelecinado = localStorage.getItem('alunoSelecionado')
+const career = localStorage.getItem('tipo');
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -42,7 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const hoje = new Date();
             const dataISO = hoje.toISOString().split('T')[0]
-            const observacaoEnviada = new Observacoes(idSalvo,dataISO,observacao)
+            let observacaoEnviada
+            if (career === "adm"){
+                observacaoEnviada = new Observacoes(-1,dataISO,observacao)
+            } else {
+                observacaoEnviada = new Observacoes(idSalvo,dataISO,observacao)
+            }
             console.log(observacaoEnviada,alunoObsevacao[0].id)
 
             const sucesso = await adicionarObs(observacaoEnviada,alunoObsevacao[0].id)

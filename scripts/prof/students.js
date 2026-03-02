@@ -2,9 +2,10 @@ import { exibirAlunoPorIndex } from '../code/aluno/ConecctionAluno.js'
 
 // pegando o id do professor que foi armazenado no local storage no forms.js
 const idSalvo = Number(localStorage.getItem('professorId'));
+const idAdm = localStorage.getItem('admId')
 
 // verificando se o id realemte esta lá e voltando para a pagina de login se não estiver 
-if (!idSalvo || idSalvo === "undefined") {
+if ((!idSalvo || idSalvo === "undefined") && (!idAdm || idAdm === "undefined")) {
     console.error("ID não encontrado! Voltando para o login...");
     window.location.href = "../login.html";
 } 
@@ -63,16 +64,21 @@ function adicionarForms(listaAlunos){
 }
 
 function filtrar(listaAlunos){
+    const form = document.getElementsByTagName('form')
     const inputNome = document.getElementById('nome do aluno');
     const opcoesTurmas = document.getElementById('sTurmas')
 
 
-    inputNome.addEventListener('input', () => {
+    inputNome.addEventListener('input', (e) => {
         renderizarAlunos(listaAlunos, opcoesTurmas.value, inputNome.value);
     });
-
+    form[0].addEventListener('submit', (e) => {
+        
+            e.preventDefault(); 
+    });
     // Evento de trocar a turma
-    opcoesTurmas.addEventListener('change', () => {
+    opcoesTurmas.addEventListener('change', (e) => {
+
         renderizarAlunos(listaAlunos, opcoesTurmas.value, inputNome.value);
     });
 }
@@ -142,7 +148,6 @@ async function iniciar() {
 
 iniciar() 
 const nomeLimpo = window.location.pathname.split("/").pop().replace(".html", "");
-console.log(nomeLimpo); // Exemplo: "grade"
 const main = document.querySelector('main');
 
 main.addEventListener('click', (e) => {

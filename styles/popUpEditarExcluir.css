@@ -13,7 +13,7 @@
 .popupEditarExcluir,
 .popupEditar {
     background: black;
-    border: 2px solid cyan;
+    border: 2px solid var(--mainColor);
     padding: 50px;
     border-radius: 6px;
 
