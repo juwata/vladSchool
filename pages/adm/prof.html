@@ -51,17 +51,7 @@
         <header>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
             <input type="text" id="profName" placeholder="nome do professor">
-            <select id="sTurmas">
-                <option selected hidden>Turmas</option>
-                <option value="all">Todas</option>
-                <option value="6A">6ºA</option>
-                <option value="7A">7ºA</option>
-                <option value="8A">8ºA</option>
-                <option value="9A">9ºA</option>
-                <option value="1A">1ºA</option>
-                <option value="2A">2ºA</option>
-                <option value="3A">3ºA</option>
-            </select>
+            <button onclick="addStud.showModal()">adicionar</button>
         </header>
         
         <section class="table">
@@ -98,6 +88,10 @@
             </a>
         </section>
     </main>
+
+    <dialog id="addProf">
+        
+    </dialog>
 
     <script>
         document.documentElement.style.setProperty('--mainColor', '#FF383C')

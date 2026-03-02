@@ -59,6 +59,47 @@ aside h1 {
     font-size: 1.7em;
 }
 
+h2 {
+    font-size: 0.8em;
+    color: hsl(0, 0%, 32%);
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+aside a {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    padding: 20px;
+    background: #0000001a;
+    border-radius: 10px;
+}
+
+aside section {
+    display: flex;
+    align-items: center;
+}
+
+.asideHeader {
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.asideFooter {
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.labelToggle {display: block}
+
+aside h1 {
+    font-size: 1.7em;
+}
+
 aside h2 {
     font-size: 0.8em;
     color: hsl(0, 0%, 32%);
@@ -104,8 +145,8 @@ aside section {
 table {
     border-collapse: collapse;
     background: var(--bgColor02);
-    width: 1100px;
     margin-left: 20px;
+    width: 1000px;
 }
 
 .thead {
@@ -119,18 +160,7 @@ th {color: var(--bgColor01)}
 
 td, th {
     padding: 15px;
-}
-
-td input {
-    background: var(--bgColor02);
-    border: 0;
-    width: 90%;
-    padding: 10px;
-    margin: 0 auto;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    height: 60px;
 }
 
 .prof td:not(:first-child):not(:last-child) input {
@@ -152,15 +182,20 @@ tr:not(:first-child):hover * {
         transform: none;
     }
 
+    main {
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    table {
+        width: 70dvw;
+    }
+
     body {
         display: grid;
         grid-template-columns: 20dvw 80dvw ;
     }
 
     aside label img, .labelToggle {display: none}
-
-    main {
-        margin: 50px auto 50px auto;
-    }
 
 }

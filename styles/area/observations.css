@@ -94,8 +94,6 @@ aside section {
     margin: 0 auto;
 }
 
-.labelToggle {
-}
 
 header {
     width: 100%;
@@ -119,7 +117,7 @@ input {
     transition: 500ms;
 }
 
-input:focus {
+input:focus, textarea:focus {
     border: 2px solid var(--mainColor);
     box-shadow: 0 16px 48px var(--mainColorT);
 }
@@ -127,7 +125,7 @@ input:focus {
 button {
     background: var(--mainColor);
     color: var(--bgColor01);
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 
@@ -148,6 +146,53 @@ main section {
     padding: 30px;
     background: var(--bgColor02);
     margin-bottom: 40px;
+}
+
+
+
+
+
+dialog {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--bgColor01);
+    border: 2px solid var(--bgColor02);
+    width: 80vw;
+    padding: 30px 20px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+dialog input, textarea {
+    background: #0A0A0A;
+    width: 100%;
+    padding: 15px 10px;
+}
+
+textarea {
+    resize: none;
+    border: 2px solid var(--bgColor03);
+    height: 200px;
+}
+
+dialog input[type="submit"] {
+    background: var(--mainColor);
+    border: 0;
+}
+
+dialog::backdrop {
+    background: #000000bb;
 }
 
 @media screen and (min-width: 768px) {
@@ -174,6 +219,10 @@ main section {
 
     main {
         margin: 0 auto;
+    }
+
+    dialog {
+        width: 30vw;
     }
 
 }

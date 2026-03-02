@@ -49,6 +49,7 @@
         <header>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
             <input type="text" id="profName" placeholder="nome do aluno">
+            <button onclick="addObs.showModal()">adicionar</button>
         </header>
 
         <section>
@@ -112,9 +113,28 @@
         </section>
     </main>
 
+    <dialog id="addObs">
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iName" autocapitalize="">
+            </div>
+            <div>
+                <label for="iClass">turma</label>
+                <input type="text" id="iClass">
+            </div>
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs"></textarea>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
     <script>
         document.documentElement.style.setProperty('--mainColor', '#FF383C')
         document.documentElement.style.setProperty('--mainColorT', '#FF383C33')
     </script>
+
 </body>
 </html>
