@@ -143,7 +143,7 @@ select , button{
     margin-top: 20px;
 }
 
-.table a {
+.table article, .table a {
     background: var(--bgColor02);
     width: 300px;
     height: 90px;
@@ -151,10 +151,56 @@ select , button{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    user-select: none;
 }
 
 .table p {
     color: hsl(0, 0%, 32%);
+}
+
+
+
+dialog {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--bgColor01);
+    border: 2px solid var(--bgColor02);
+    width: 70vw;
+    padding: 30px 20px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+dialog input, textarea, dialog select {
+    background: #0A0A0A;
+    width: 100%;
+    padding: 15px 10px;
+    color: #fff;
+}
+
+option {
+    color: #fff;
+}
+
+
+dialog input[type="submit"] {
+    background: var(--mainColor);
+    border: 0;
+}
+
+dialog::backdrop {
+    background: #000000bb;
 }
 
 
@@ -186,6 +232,10 @@ select , button{
 
     main {
         margin-left: 22vw;
+    }
+
+    dialog {
+        width: 30vw;
     }
    
 }

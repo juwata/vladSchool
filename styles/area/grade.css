@@ -135,11 +135,13 @@ aside section {
     margin: 0 auto;
 }
 
-
-
-
 .labelToggle {
     padding: 20px;
+}
+
+main h1{
+    margin-bottom: 25px;
+    margin-left: 25px;
 }
 
 table {
@@ -173,14 +175,63 @@ tr:not(:first-child):hover * {
 }
 
 
+dialog {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--bgColor01);
+    border: 2px solid var(--bgColor02);
+    width: 80vw;
+    padding: 30px 20px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+dialog input {
+    background: #0A0A0A;
+    width: 100%;
+    padding: 15px 10px;
+
+    transition: 500ms;
+}
+
+dialog input[type="submit"] {
+    background: var(--mainColor);
+    border: 0;
+}
+
+dialog input:focus {
+    border: 2px solid var(--mainColor);
+    box-shadow: 0 16px 48px var(--mainColorT);
+}
+
+dialog::backdrop {background: #000000bb}
+
 
 @media screen and (min-width: 768px) {
+    body {
+        display: grid;
+        grid-template-columns: 20dvw 80dvw ;
+    }
+
     aside {
         position: initial;
         width: 100%;
         height: 100vh;
         transform: none;
     }
+
+    aside label img, .labelToggle {display: none}
 
     main {
         margin: 0 auto;
@@ -191,11 +242,7 @@ tr:not(:first-child):hover * {
         width: 70dvw;
     }
 
-    body {
-        display: grid;
-        grid-template-columns: 20dvw 80dvw ;
+    dialog {
+        width: 30dvw;
     }
-
-    aside label img, .labelToggle {display: none}
-
 }

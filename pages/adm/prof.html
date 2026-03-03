@@ -30,7 +30,7 @@
                 <p>professores</p>
             </a>
             
-            <a href="observations.html">
+            <a href="pre-obs.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>observações</p>
             </a>
@@ -51,46 +51,96 @@
         <header>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
             <input type="text" id="profName" placeholder="nome do professor">
-            <button onclick="addStud.showModal()">adicionar</button>
+            <button onclick="addProf.showModal()">adicionar</button>
         </header>
         
         <section class="table">
-            <a href="grade.html">
-                <div>
+            <article>
+                <div ondblclick="editProf.showModal()">
                     <h2>Ana Souza</h2>
                     <p>Matemática</p>
                 </div>
                 <img src="../../assets/icons/arrow.svg">
-            </a>
+            </article>
 
-            <a href="">
+            <article>
                 <div>
                     <h2>Ana Souza</h2>
                     <p>Matemática</p>
                 </div>
                 <img src="../../assets/icons/arrow.svg">
-            </a>
+            </article>
 
-            <a href="">
+            <article>
                 <div>
                     <h2>Ana Souza</h2>
                     <p>Matemática</p>
                 </div>
                 <img src="../../assets/icons/arrow.svg">
-            </a>
+            </article>
 
-            <a href="">
+            <article>
                 <div>
                     <h2>Ana Souza</h2>
                     <p>Matemática</p>
                 </div>
                 <img src="../../assets/icons/arrow.svg">
-            </a>
+            </article>
         </section>
     </main>
 
     <dialog id="addProf">
-        
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iName" autocapitalize="" placeholder="nome e sobrenome" autocomplete="name">
+            </div>
+            <div>
+                <label for="iEmail">email</label>
+                <input type="email" id="iEmail" placeholder="email@email.com" autocomplete="email">
+            </div>
+            <div>
+                <label for="iPasswd">senha</label>
+                <input type="password" id="iPasswd" placeholder="********" autocomplete="new-password">
+            </div>
+            <div>
+                <label for="iSubj">matérias</label>
+                <select id="iSubj" multiple size="4">
+                    <option value="MAT">• Matemática</option>
+                    <option value="POA">• Programação Orientada a Apostas</option>
+                    <option value="MAT">• Ciências</option>
+                    <option value="POA">• Teoria da Conspiração</option>
+                </select>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
+    <dialog id="editProf">
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iName" autocapitalize="" placeholder="nome e sobrenome" autocomplete="name">
+            </div>
+            <div>
+                <label for="iEmail">email</label>
+                <input type="email" id="iEmail" placeholder="email@email.com" autocomplete="email">
+            </div>
+            <div>
+                <label for="iPasswd">senha</label>
+                <input type="password" id="iPasswd" placeholder="********" autocomplete="new-password">
+            </div>
+            <div>
+                <label for="iSubj">matérias</label>
+                <select id="iSubj" multiple size="4">
+                    <option value="MAT">• Matemática</option>
+                    <option value="POA">• Programação Orientada a Apostas</option>
+                    <option value="MAT">• Ciências</option>
+                    <option value="POA">• Teoria da Conspiração</option>
+                </select>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
     </dialog>
 
     <script>
