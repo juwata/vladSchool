@@ -1,5 +1,5 @@
-import {  exibirAlunoPorId } from '../code/aluno/ConecctionAluno.js';
-import { exibirProfessorPorId } from '../code/professor/ConecctionProfessor.js'
+import {  exibirAlunoPorId } from './code/aluno/ConecctionAluno.js';
+import { exibirProfessorPorId } from './code/professor/ConecctionProfessor.js'
 
 // pegando o id do aluno que foi armazenado no local storage no forms.js
 const acessoAluno = localStorage.getItem('alunoId')

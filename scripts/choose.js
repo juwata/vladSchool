@@ -1,4 +1,4 @@
-import { exibirAlunoPorIndex } from '../code/aluno/ConecctionAluno.js'
+import { exibirAlunoPorIndex } from './code/aluno/ConecctionAluno.js'
 
 // pegando o id do professor que foi armazenado no local storage no forms.js
 const idSalvo = Number(localStorage.getItem('professorId'));
@@ -32,8 +32,7 @@ async function retornarLista(){
     } while (listaAlunosTemp.length==10)
     return listaAlunos
 }
-function adicionarForms(listaAlunos){
-    const main = document.getElementsByTagName('main');
+function adicionarFiltrosTurma(listaAlunos){
     let listaTurmas = []
 
     for (const aluno of listaAlunos){
@@ -42,7 +41,7 @@ function adicionarForms(listaAlunos){
         }
     }
 
-    const opcoesTurmas = form.querySelector('#sTurmas')
+    const opcoesTurmas = document.getElementById('sTurmas')
 
     opcoesTurmas.innerHTML = '<option selected hidden>Turmas</option><option value="todos">Todas as Turmas</option>'
 
@@ -60,11 +59,11 @@ function adicionarForms(listaAlunos){
     
         opcoesTurmas.appendChild(opcao)
     }
-    main[0].appendChild(form)
 }
 
 function filtrar(listaAlunos){
-    const form = document.getElementsByTagName('form')
+    const form = document.getElementsByTagName('header')
+    
     const inputNome = document.getElementById('nome do aluno');
     const opcoesTurmas = document.getElementById('sTurmas')
 
@@ -86,7 +85,7 @@ function filtrar(listaAlunos){
 
 function renderizarAlunos(listaAlunos,turmaSelecionada = "todos", nomePesquisado = "") {
 
-    const main = document.getElementsByTagName('main');
+    const table = document.getElementsByClassName('table');
 
     const listaFiltrada = listaAlunos.filter(aluno => {
         const serieAluno = aluno.dados_aluno?.serie || aluno.serie || "";
@@ -100,59 +99,56 @@ function renderizarAlunos(listaAlunos,turmaSelecionada = "todos", nomePesquisado
         return matchTurma && matchNome;
     });
 
-    const sectionsAntigas = main[0].querySelectorAll('section');
+    const sectionsAntigas = table[0].querySelectorAll('div');
     if (sectionsAntigas != null ){
         sectionsAntigas.forEach(s => s.remove());
 
     }
     
         for (const aluno of listaFiltrada) {
-            const section = document.createElement('section')
+            const section = document.createElement('div')
             section.dataset.idAluno = aluno.id
 
             const div = document.createElement('div')
 
-            const pNome = document.createElement('p')
+            const h2Nome = document.createElement('h2')
             const pTurma = document.createElement('p')
-            pTurma.classList = 'turmaAluno'
 
-            pNome.textContent = aluno.nome
+            h2Nome.textContent = aluno.nome
             pTurma.textContent = aluno.serie
 
-            div.appendChild(pNome)
+            div.appendChild(h2Nome)
             div.appendChild(pTurma)
 
             const img = document.createElement('img')
-            img.src = '../../assets/images/setaRedirecionar.png'
+            img.src = '../../assets/icons/arrow.svg'
             img.alt = 'redirecionar'
 
             section.appendChild(div)
             section.appendChild(img)
             
-            main[0].appendChild(section)
+            table[0].appendChild(section)
         }
 }
 
 
 
 async function iniciar() {
-    const main = document.getElementsByTagName('main')[0];
-    main.innerHTML = ''; 
     
     const listaAlunos = await retornarLista();
-    adicionarForms(listaAlunos);
+    adicionarFiltrosTurma(listaAlunos);
     renderizarAlunos(listaAlunos);
     filtrar(listaAlunos)
     
 }
 
 iniciar() 
-const nomeLimpo = window.location.pathname.split("/").pop().replace(".html", "");
-const main = document.querySelector('main');
+const main = document.querySelector('main section');
 
 main.addEventListener('click', (e) => {
+    console.log('ola')
     // Verifica se o clique foi em uma section ou dentro de uma
-    const section = e.target.closest('section');
+    const section = e.target.closest('div');
     
     if (section) {
         // Opcional: Salvar o ID do aluno que definimos no dataset.id
@@ -161,10 +157,10 @@ main.addEventListener('click', (e) => {
             localStorage.setItem('alunoSelecionado', alunoId);
         }
         const nomePagina = window.location.pathname.split("/").pop().replace(".html", "");
-        if (nomePagina=="studentsObservations"){
+        if (nomePagina=="chooseObservations"){
             window.location.href = 'observations.html'; 
 
-        } else if(nomePagina=="studentsNotas"){
+        } else if(nomePagina=="chooseNotas"){
             window.location.href = 'grade.html'; 
             
         }

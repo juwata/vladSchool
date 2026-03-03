@@ -1,6 +1,6 @@
 
-import NotasMostrar from '../code/model/NotasMostrar.js';
-import {  exibirAlunoPorId } from '../code/aluno/ConecctionAluno.js';
+import NotasMostrar from './code/model/NotasMostrar.js';
+import {  exibirAlunoPorId } from './code/aluno/ConecctionAluno.js';
 
 // instanciando um dicionario com o idDisciplina e a sua respectiva disciplina
 const discionarioDiscplina = {
@@ -40,6 +40,7 @@ let aluno = {}
 // verificando se o id realemte esta lá e voltando para a pagina de login se não estiver 
 if (!(!acessoAluno || acessoAluno === "undefined") || !adm || !professor) {
     if (!adm || !professor){
+        console.log(alunoSelecinado)
         aluno = await exibirAlunoPorId(alunoSelecinado);
     } else if (!(!acessoAluno || acessoAluno === "undefined")){
         aluno = await exibirAlunoPorId(acessoAluno);

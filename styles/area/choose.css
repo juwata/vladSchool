@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+::-webkit-scrollbar {display: none}
+::selection {background: var(--mainColorT)}
+
+:root {
+    --color00: #FFF;
+    --bgColor01: #000;
+    --bgColor02: #121212;
+    --bgColor03: #232323;
+
+    --fontText: 'Archivo';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    color: var(--color00);
+    font-family: var(--fontText);
+    outline: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    border: 0;
+}
+
+body {
+    background: var(--bgColor01);
+    width: 100dvw; height: 100dvh;
+}
+
+
+/* --- main config ------ */
+
+
+aside {
+    background: var(--bgColor02);
+    width: 75dvw;
+    height: 100dvh;
+    padding: 40px 15px 55px 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+    z-index: 100;
+
+    transform: translateX(-100%);
+    transition: transform 400ms ease;
+}
+
+:has(#iToggle:checked) aside {
+    transform: translateX(0);
+}
+
+.labelToggle {display: block}
+
+aside h1 {
+    font-size: 1.7em;
+}
+
+aside h2 {
+    font-size: 0.8em;
+    color: hsl(0, 0%, 32%);
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+aside a {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    padding: 20px;
+    background: #0000001a;
+    border-radius: 10px;
+}
+
+aside section {
+    display: flex;
+    align-items: center;
+}
+
+.asideHeader {
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.asideFooter {
+    gap: 15px;
+    margin: 0 auto;
+}
+
+
+
+
+
+header {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    padding: 15px 10px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 10px;
+}
+
+input, select, option, button {height: 100%}
+
+select, option {color: var(--bgColor01);}
+
+input {
+    background: #0A0A0A;
+    border: 2px solid var(--bgColor03);
+    padding: 10px;
+
+
+    transition: 500ms;
+}
+
+input:focus {
+    border: 2px solid var(--mainColor);
+    box-shadow: 0 16px 48px var(--mainColorT);
+}
+
+select , button{
+    color: #000;
+    background: var(--mainColor);
+    padding: 10px;
+}
+
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.table article, .table>div {
+    background: var(--bgColor02);
+    width: 300px;
+    height: 90px;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.table p {
+    color: hsl(0, 0%, 32%);
+}
+
+
+
+dialog {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--bgColor01);
+    border: 2px solid var(--bgColor02);
+    width: 70vw;
+    padding: 30px 20px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+dialog input, textarea, dialog select {
+    background: #0A0A0A;
+    width: 100%;
+    padding: 15px 10px;
+    color: #fff;
+}
+
+option {
+    color: #fff;
+}
+
+
+dialog input[type="submit"] {
+    background: var(--mainColor);
+    border: 0;
+}
+
+dialog::backdrop {
+    background: #000000bb;
+}
+
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20vw;
+        height: 100vh;
+        transform: none;
+    }
+
+    aside label img, .labelToggle {display: none}
+
+    :has(#iToggle:checked) table, :has(#iToggle:checked) header {width: 75dvw}
+
+    header {
+        gap: 10px;
+    }
+
+    header input {
+        width: 100%;
+    }
+
+    main {
+        margin-left: 22vw;
+    }
+
+    dialog {
+        width: 30vw;
+    }
+   
+}
