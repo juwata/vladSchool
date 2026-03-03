@@ -20,7 +20,7 @@
 
         <nav>
             <h2>GERAL</h2>
-            <a href="choose.html" style="background-color: var(--mainColorT);">
+            <a href="choose.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>alunos</p>
             </a>
@@ -30,7 +30,7 @@
                 <p>professores</p>
             </a>
             
-            <a href="pre-obs.html">
+            <a href="pre-obs.html" style="background-color: var(--mainColorT);">
                 <img src="../../assets/icons/aside.svg">
                 <p>observações</p>
             </a>
@@ -50,8 +50,7 @@
     <main>
         <header>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
-            <input type="text" id="studName" placeholder="nome do aluno">
-            <button onclick="addStud.showModal()">adicionar</button>
+            <input type="text" id="nome do aluno" placeholder="nome do aluno">
             <select id="sTurmas">
                 <option selected hidden>Turmas</option>
                 <option value="all">Todas</option>
@@ -66,7 +65,7 @@
         </header>
         
         <section class="table">
-            <a href="grade.html">
+            <a href="observations.html">
                 <div>
                     <h2>João Silva</h2>
                     <p>9ºD</p>
@@ -99,29 +98,6 @@
             </a>
         </section>
     </main>
-
-    <dialog id="addStud">
-        <form method="post">
-            <div>
-                <label for="iName">nome</label>
-                <input type="text" id="iName" autocapitalize="" placeholder="nome e sobrenome">
-            </div>
-            <div>
-                <label for="iReg">matrícula</label>
-                <input type="text" id="iReg" maxlength="10" placeholder="xxxx-xxxxx">
-            </div>
-            <div>
-                <label for="iClass">turma</label>
-                <select id="iClass">
-                    <option value="9A">9ª A</option>
-                    <option value="9B">9ª B</option>
-                    <option value="9C">9ª C</option>
-                    <option value="9D">9ª D</option>
-                </select>
-            </div>
-            <input type="submit" value="adicionar">
-        </form>
-    </dialog>
 
     <script>
         document.documentElement.style.setProperty('--mainColor', '#FF383C')

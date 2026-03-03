@@ -24,7 +24,7 @@
                 <p>alunos</p>
             </a>
             
-            <a href="observations.html" style="background-color: var(--mainColorT);">
+            <a href="pre-obs.html" style="background-color: var(--mainColorT);">
                 <img src="../../assets/icons/aside.svg">
                 <p>observações</p>
             </a>
@@ -44,11 +44,10 @@
     <main>
         <header>
             <label for="iToggle" class="labelToggle"><img src="../../assets/icons/menu.svg"></label>
-            <input type="text" id="nome do aluno" placeholder="nome do aluno">
-            <button>Adicionar</button>
+            <button onclick="addObs.showModal()">adicionar</button>
         </header>
 
-        <section>
+        <section ondblclick="whatToDo.showModal()">
             <div>
                 <h2>ALUNO</h2>
                 <p>Ana Souza</p>
@@ -88,6 +87,41 @@
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quisquam culpa ut reiciendis temporibus repellat, illum, minus aliquid laboriosam iusto earum enim eius rerum voluptates praesentium quidem ipsum laudantium natus ducimus, sint cum error recusandae! Repudiandae voluptates earum odio! Sit doloribus nisi at qui reiciendis officia a, soluta eum hic?</p>
         </section>
     </main>
+
+    <dialog id="addObs">
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iName" autocapitalize="">
+            </div>
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs"></textarea>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
+    <dialog id="whatToDo">
+        <p>o que você deseja fazer?</p>
+        <a onclick="exclude.showModal()">
+            <img src="../../assets/icons/trash.svg">
+            <p>excluir</p>
+        </a>
+        <a onclick="edit.showModal()">
+            <img src="../../assets/icons/trash.svg">
+            <p>editar</p>
+        </a>
+    </dialog>
+
+    <dialog id="exclude" onmouseenter="whatToDo.close()">
+        <p>kralhooo</p>
+    </dialog>
+
+    <dialog id="edit" onmouseenter="whatToDo.close()">
+
+    </dialog>
+
 
     <script>
         document.documentElement.style.setProperty('--mainColor', '#00C0E8')

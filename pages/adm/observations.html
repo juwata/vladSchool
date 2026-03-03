@@ -12,24 +12,25 @@
     <aside>
         <section class="asideHeader">
             <div>
-                <h2>ALUNO</h2>
-                <p>João Silva</p>
+                <h2>PROFESSOR</h2>
+                <p>Ana Souza</p>
             </div>
             <label for="iToggle"><img src="../../assets/icons/toggle.svg"></label>
         </section>
+
         <nav>
             <h2>GERAL</h2>
             <a href="choose.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>alunos</p>
             </a>
-            
+
             <a href="prof.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>professores</p>
             </a>
             
-            <a href="observations.html" style="background-color: var(--mainColorT);">
+            <a href="pre-obs.html" style="background-color: var(--mainColorT);">
                 <img src="../../assets/icons/aside.svg">
                 <p>observações</p>
             </a>
@@ -39,6 +40,7 @@
                 <p>dashboard</p>
             </a>
         </nav>
+
         <section class="asideFooter">
             <img src="../../assets/icons/lamp-red.svg">
             <h1>VladSchool</h1>
@@ -48,14 +50,11 @@
     <main>
         <header>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
-            <input type="text" id="profName" placeholder="nome do aluno">
+            <h1>João Souza</h1>
+            <button onclick="addObs.showModal()">adicionar</button>
         </header>
 
-        <section>
-            <div>
-                <h2>ALUNO</h2>
-                <p>João Silva</p>
-            </div>
+        <section ondblclick="whatToDo.showModal()">
             <div>
                 <h2>PROFESSOR</h2>
                 <p>Ana Souza</p>
@@ -65,10 +64,6 @@
 
         <section>
             <div>
-                <h2>ALUNO</h2>
-                <p>João Silva</p>
-            </div>
-            <div>
                 <h2>DIRETOR</h2>
                 <p>Nicolas Vlad</p>
             </div>
@@ -76,10 +71,6 @@
         </section>
 
         <section>
-            <div>
-                <h2>ALUNO</h2>
-                <p>João Silva</p>
-            </div>
             <div>
                 <h2>PROFESSOR</h2>
                 <p>Ana Souza</p>
@@ -89,10 +80,6 @@
 
         <section>
             <div>
-                <h2>ALUNO</h2>
-                <p>João Silva</p>
-            </div>
-            <div>
                 <h2>DIRETOR</h2>
                 <p>Nicolas Vlad</p>
             </div>
@@ -100,10 +87,6 @@
         </section>
 
         <section>
-            <div>
-                <h2>ALUNO</h2>
-                <p>João Silva</p>
-            </div>
             <div>
                 <h2>PROFESSOR</h2>
                 <p>Ana Souza</p>
@@ -112,9 +95,54 @@
         </section>
     </main>
 
+    <dialog id="addObs">
+        <form method="post">
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs"></textarea>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
+    <dialog id="whatToDo">
+        <h3>o que você deseja fazer?</h3>
+        <section>
+            <a onclick="editObs.showModal()">
+                <div><img src="../../assets/icons/edit.svg"></div>
+                <p>editar</p>
+            </a>
+            <a onclick="excludeObs.showModal()">
+                <div><img src="../../assets/icons/trash.svg"></div>
+                <p>excluir</p>
+            </a>
+        </section>
+    </dialog>
+    
+    <dialog id="editObs" onmouseenter="whatToDo.close()">
+        <form method="post">
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs"></textarea>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
+    <dialog id="excludeObs" onmouseenter="whatToDo.close()">
+        <form method="post">
+            <h3>tem certeza?</h3>
+            <div>
+                <input type="button" value="sim">
+                <input type="button" value="não" onclick="excludeObs.close()">
+            </div>
+        </form>
+    </dialog>
+
     <script>
         document.documentElement.style.setProperty('--mainColor', '#FF383C')
         document.documentElement.style.setProperty('--mainColorT', '#FF383C33')
     </script>
+
 </body>
 </html>
