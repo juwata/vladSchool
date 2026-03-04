@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/icons/lamp-red.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../styles/area/choose.css">
-    <script type="module" src="../../scripts/choose.js"></script>
+    <script type="module" src="../../scripts/choose.js" defer></script>
+    <script type="module" src="../../scripts/students/adicionarStudent.js" defer></script>
     <title>VladSchool</title>
     <style>
         :root {
@@ -56,6 +57,7 @@
         <header>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
             <input type="text" id="nome do aluno" placeholder="nome do aluno">
+            <button onclick="addStud.showModal()">adicionar</button>
             <select id="sTurmas">
                 
             </select>
@@ -64,6 +66,25 @@
 
         </section>
     </main>
-    
+    <dialog id="addStud">
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iName" name="nome" autocapitalize="" placeholder="nome e sobrenome">
+            </div>
+            <div>
+                <label for="iReg">matrícula</label>
+                <input type="text" id="iReg" name="matricula" maxlength="10" placeholder="xxxx-xxxxx">
+            </div>
+            <div>
+                <label for="iClass">turma</label>
+                <input list="turmas" id="iTur" name="turma">
+                <datalist id="turmas" name=>
+                
+                </datalist>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
 </body>
 </html>

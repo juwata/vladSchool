@@ -15,7 +15,6 @@ async function editarObs(evento){
     evento.preventDefault();
 
     const alunoSelecinado = localStorage.getItem('alunoSelecionado')
-    console.log(alunoSelecinado)
     let obsModificar = localStorage.getItem('obsModificar')
     obsModificar = JSON.parse(obsModificar)
 

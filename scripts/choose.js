@@ -42,8 +42,10 @@ function adicionarFiltrosTurma(listaAlunos){
     }
 
     const opcoesTurmas = document.getElementById('sTurmas')
+    const opcoesTurmasPopUp = document.getElementById('turmas')
 
     opcoesTurmas.innerHTML = '<option selected hidden>Turmas</option><option value="todos">Todas as Turmas</option>'
+    opcoesTurmasPopUp.innerHTML = ''
 
     listaTurmas.sort((a, b) => {
         return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
@@ -51,13 +53,17 @@ function adicionarFiltrosTurma(listaAlunos){
 
     for (const turma of listaTurmas){
     
-        const opcao = document.createElement('option')
+        const opcaoFiltro = document.createElement('option')
+        const opcaoAdd = document.createElement('option')
     
-        opcao.value = turma
+        opcaoFiltro.value = turma
+        opcaoAdd.value = turma
+
+        opcaoFiltro.textContent = turma
+        opcaoAdd.textContent = turma
     
-        opcao.textContent = turma
-    
-        opcoesTurmas.appendChild(opcao)
+        opcoesTurmas.appendChild(opcaoFiltro)
+        opcoesTurmasPopUp.appendChild(opcaoAdd)
     }
 }
 
@@ -165,3 +171,21 @@ main.addEventListener('click', (e) => {
         }
     }
 });
+
+const popUp = document.getElementById('addStud')
+
+
+popUp.addEventListener('click', (e) => {
+    const rect = popUp.getBoundingClientRect();
+            
+        const clicouFora = (
+                e.clientX < rect.left ||
+                e.clientX > rect.right ||
+                e.clientY < rect.top ||
+                e.clientY > rect.bottom
+        );
+
+        if (clicouFora) {
+                popUp.close();
+        }
+})

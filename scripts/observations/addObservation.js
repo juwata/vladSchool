@@ -18,7 +18,6 @@ async function addObs(evento){
         alert("Digite algo no campo de observação!")
         
     }
-    console.log(textoObservacao)
 
     const observacaoAdicionada = new Observacoes(acessoProfessor,dataISO,textoObservacao)
 
