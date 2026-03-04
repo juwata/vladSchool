@@ -1,6 +1,7 @@
 
 import NotasMostrar from './code/model/NotasMostrar.js';
 import {  exibirAlunoPorId } from './code/aluno/ConecctionAluno.js';
+import { exibirProfessorPorId } from './code/professor/ConecctionProfessor.js';
 
 // instanciando um dicionario com o idDisciplina e a sua respectiva disciplina
 const discionarioDiscplina = {
@@ -40,7 +41,6 @@ let aluno = {}
 // verificando se o id realemte esta lá e voltando para a pagina de login se não estiver 
 if (!(!acessoAluno || acessoAluno === "undefined") || !adm || !professor) {
     if (!adm || !professor){
-        console.log(alunoSelecinado)
         aluno = await exibirAlunoPorId(alunoSelecinado);
     } else if (!(!acessoAluno || acessoAluno === "undefined")){
         aluno = await exibirAlunoPorId(acessoAluno);
@@ -98,6 +98,28 @@ for (const [materia,nota] of Object.entries(dicionarioNotas)){
 
     // criando a linha que sera adicionada
     const linha = document.createElement('tr')
+    if (!professor){
+        const professorAcessado = await exibirProfessorPorId(acessoProfessor)
+
+        const disciplinaLecionadas = professorAcessado[0].disciplinasLecionadas
+        const idMateriaAtual = Number(Object.keys(discionarioDiscplina).find(key => discionarioDiscplina[key] === materia))
+
+        if (disciplinaLecionadas.includes(idMateriaAtual)){
+            linha.onclick = function (){
+                editGrade.showModal()
+                localStorage.setItem("notasModificar",JSON.stringify(obsSalvar))
+            };
+            linha.style = 'cursor:pointer'
+        } else {
+            linha.setAttribute('onclick', 'alert("Essa matéria não é sua!")');
+
+        }
+    } else if (!adm) {
+        linha.onclick = function (){
+            editGrade.showModal()
+            };
+    }
+
 
     // adicionando cada elemento daquela linha
     const tdMateria = document.createElement('td');
@@ -170,3 +192,28 @@ for (const [materia,nota] of Object.entries(dicionarioNotas)){
     tabela[0].appendChild(linha);
 }
 
+const popUp = document.getElementById('editGrade')
+
+
+popUp.addEventListener('click', (e) => {
+    const rect = popUp.getBoundingClientRect();
+            
+        const clicouFora = (
+                e.clientX < rect.left ||
+                e.clientX > rect.right ||
+                e.clientY < rect.top ||
+                e.clientY > rect.bottom
+        );
+
+        if (clicouFora) {
+                popUp.close();
+        }
+})
+
+export function carregarNotasEdit(){
+    let obsModificar = localStorage.getItem('obsModificar')
+    obsModificar = JSON.parse(obsModificar)
+    
+    const inputObs = document.querySelectorAll("#editObs form textarea")
+    inputObs[0].value = obsModificar.observacao
+}

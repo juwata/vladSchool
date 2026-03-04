@@ -102,8 +102,17 @@ const popUps = [document.getElementById('addObs'),document.getElementById('whatT
 
 for (const popUp of popUps){
     popUp.addEventListener('click', (e) => {
-        if (e.target === popUp) {
-            popUp.close();
+        const rect = popUp.getBoundingClientRect();
+            
+        const clicouFora = (
+                e.clientX < rect.left ||
+                e.clientX > rect.right ||
+                e.clientY < rect.top ||
+                e.clientY > rect.bottom
+        );
+
+        if (clicouFora) {
+                popUp.close();
         }
     });
 }

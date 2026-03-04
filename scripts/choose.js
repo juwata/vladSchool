@@ -146,9 +146,8 @@ iniciar()
 const main = document.querySelector('main section');
 
 main.addEventListener('click', (e) => {
-    console.log('ola')
     // Verifica se o clique foi em uma section ou dentro de uma
-    const section = e.target.closest('div');
+    const section = e.target.closest('div[data-id-aluno]');
     
     if (section) {
         // Opcional: Salvar o ID do aluno que definimos no dataset.id
