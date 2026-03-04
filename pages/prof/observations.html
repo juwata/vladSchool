@@ -44,6 +44,7 @@
     <main>
         <header>
             <label for="iToggle" class="labelToggle"><img src="../../assets/icons/menu.svg"></label>
+            <h1>Ana Souza</h1>
             <button onclick="addObs.showModal()">adicionar</button>
         </header>
 
@@ -91,10 +92,6 @@
     <dialog id="addObs">
         <form method="post">
             <div>
-                <label for="iName">nome</label>
-                <input type="text" id="iName" autocapitalize="">
-            </div>
-            <div>
                 <label for="iObs">observação</label>
                 <textarea id="iObs"></textarea>
             </div>
@@ -103,24 +100,39 @@
     </dialog>
 
     <dialog id="whatToDo">
-        <p>o que você deseja fazer?</p>
-        <a onclick="exclude.showModal()">
-            <img src="../../assets/icons/trash.svg">
-            <p>excluir</p>
-        </a>
-        <a onclick="edit.showModal()">
-            <img src="../../assets/icons/trash.svg">
-            <p>editar</p>
-        </a>
+        <h3>o que você deseja fazer?</h3>
+        <section>
+            <a onclick="editObs.showModal()">
+                <div><img src="../../assets/icons/edit.svg"></div>
+                <p>editar</p>
+            </a>
+            <a onclick="excludeObs.showModal()">
+                <div><img src="../../assets/icons/trash.svg"></div>
+                <p>excluir</p>
+            </a>
+        </section>
+    </dialog>
+    
+    <dialog id="editObs" onmouseenter="whatToDo.close()">
+        <form method="post">
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs"></textarea>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
     </dialog>
 
-    <dialog id="exclude" onmouseenter="whatToDo.close()">
-        <p>kralhooo</p>
+    <dialog id="excludeObs" onmouseenter="whatToDo.close()">
+        <form method="post">
+            <h3>tem certeza?</h3>
+            <div>
+                <input type="button" value="sim">
+                <input type="button" value="não" onclick="excludeObs.close()">
+            </div>
+        </form>
     </dialog>
 
-    <dialog id="edit" onmouseenter="whatToDo.close()">
-
-    </dialog>
 
 
     <script>

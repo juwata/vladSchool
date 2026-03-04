@@ -57,7 +57,7 @@
                 <th>média</th>
                 <th>status</th>
             </tr>
-            <tr>
+            <tr ondblclick="editGrade.showModal()">
                 <td>aaaa</td>
                 <td></td>
                 <td></td>
@@ -81,6 +81,20 @@
            
         </table>
     </main>
+
+    <dialog id="editGrade">
+        <form method="post">
+            <div>
+                <label for="iN1">nota 1</label>
+                <input type="number" id="iN1" min="0" max="10">
+            </div>
+            <div>
+                <label for="iN2">nota 2</label>
+                <input type="number" id="iN2" min="0" max="10">
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
 
     <script>
         document.documentElement.style.setProperty('--mainColor', '#00C0E8')
