@@ -45,7 +45,10 @@ function adicionarFiltrosTurma(listaAlunos){
     const opcoesTurmasPopUp = document.getElementById('turmas')
 
     opcoesTurmas.innerHTML = '<option selected hidden>Turmas</option><option value="todos">Todas as Turmas</option>'
-    opcoesTurmasPopUp.innerHTML = ''
+    if (!(!idAdm || idAdm === "undefined")){
+        opcoesTurmasPopUp.innerHTML = ''
+    }
+    
 
     listaTurmas.sort((a, b) => {
         return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
@@ -53,17 +56,23 @@ function adicionarFiltrosTurma(listaAlunos){
 
     for (const turma of listaTurmas){
     
+        if (!(!idAdm || idAdm === "undefined")){
+            const opcaoAdd = document.createElement('option')
+            opcaoAdd.value = turma
+            opcaoAdd.textContent = turma
+            opcoesTurmasPopUp.appendChild(opcaoAdd)
+        }
         const opcaoFiltro = document.createElement('option')
-        const opcaoAdd = document.createElement('option')
+        
     
         opcaoFiltro.value = turma
-        opcaoAdd.value = turma
+        
 
         opcaoFiltro.textContent = turma
-        opcaoAdd.textContent = turma
+        
     
         opcoesTurmas.appendChild(opcaoFiltro)
-        opcoesTurmasPopUp.appendChild(opcaoAdd)
+        
     }
 }
 
@@ -172,20 +181,23 @@ main.addEventListener('click', (e) => {
     }
 });
 
-const popUp = document.getElementById('addStud')
+if (!(!idAdm || idAdm === "undefined")){
+    const popUp = document.getElementById('addStud')
 
 
-popUp.addEventListener('click', (e) => {
-    const rect = popUp.getBoundingClientRect();
-            
-        const clicouFora = (
-                e.clientX < rect.left ||
-                e.clientX > rect.right ||
-                e.clientY < rect.top ||
-                e.clientY > rect.bottom
-        );
-
-        if (clicouFora) {
-                popUp.close();
-        }
-})
+    popUp.addEventListener('click', (e) => {
+        const rect = popUp.getBoundingClientRect();
+                
+            const clicouFora = (
+                    e.clientX < rect.left ||
+                    e.clientX > rect.right ||
+                    e.clientY < rect.top ||
+                    e.clientY > rect.bottom
+            );
+    
+            if (clicouFora) {
+                    popUp.close();
+            }
+    })
+    
+}

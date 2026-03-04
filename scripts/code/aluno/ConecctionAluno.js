@@ -275,7 +275,6 @@ async function deletarAluno(id=String) {
 async function atualizarAluno(id=String, aluno=Aluno) {
     try {
         aluno = aluno.paraJson();
-
         //metodo que que envia e conecta no backend para atualizar um aluno
         const resposta = await fetch(`${url}app/aluno/atualizar?_id=${id}`, {
             method: 'POST',
@@ -463,32 +462,49 @@ async function atualizarObs(obsAntiga, id=String, novaObs) {
         return resultado;
 }
 
-async function atualizarNota(nota=Notas, id=String, indice=integer) {
+async function atualizarNota(nota = Notas, id = String) {
+    const alunos = await exibirAlunoPorId(id);
+    if (!alunos || alunos.length === 0) return { success: false, message: "Aluno não encontrado" };
+
+    const aluno = alunos[0];
+
+    const listaNotas = aluno.notas; 
+
+    const index = listaNotas.findIndex(n => 
+        Number(n.id_disciplina) === Number(nota.id_disciplina) && 
+        n.periodo === nota.periodo
+    );
+
+    if (index !== -1) {
+        listaNotas[index] = nota;
+    } else {
+        listaNotas.push(nota);
+    }
+
+    return await atualizarAluno(id, aluno);
+}
+
+//atualiza o aluno mas adicionando uma nota no fim do array
+async function criarNota(nota=Notas, id=String) {
     const alunos = await exibirAlunoPorId(id);
     const aluno = alunos[0];    
 
-    if (indice < 0 || indice > 1) {
-        console.log("indice deve ser 0 ou 1");
+    const listaNotas = aluno.notas;
+
+    const index = listaNotas.findIndex(n => 
+        n.id_disciplina === notaObjeto.id_disciplina && 
+        n.periodo === notaObjeto.periodo
+    );
+
+    if (index !== -1) {
+        listaNotas[index] = nota;
+    } else {
+        listaNotas.push(nota);
     }
 
-    // garante que o array exista
-    if (!aluno.notas) {
-        aluno.notas = [];
-    }
-    
-    
-    while (aluno.notas.length <= indice) {
-        aluno.notas.push(new Notas(-1, -1, 0, "null"));
-    }
-    
-    // Atualiza a nota (1 ou 2)
-    aluno.notas[indice] = nota;
-    
-    //salva no banco
-    await atualizarAluno(id, aluno);
-    
-    return true;
+    return await atualizarAluno(id, aluno);
 }
+
 async function exibirAlunoPorEmail(email=String) {
     try {
         //constante do tipo de busca
@@ -584,4 +600,4 @@ async function exibirAlunoPorMatricula(matricula=String) {
 
 }
 
-export { criarAluno, exibirAlunoPorIndex, exibirAlunoPorNome, exibirAlunoPorSerie, exibirAlunoPorStatus, deletarAluno, atualizarAluno, logarAluno, exibirAlunoPorId, adicionarObs, removerObs, atualizarObs, atualizarNota , exibirAlunoPorEmail, exibirAlunoPorMatricula};
+export { criarAluno, exibirAlunoPorIndex, exibirAlunoPorNome, exibirAlunoPorSerie, exibirAlunoPorStatus, deletarAluno, atualizarAluno, logarAluno, exibirAlunoPorId, adicionarObs, removerObs, atualizarObs, atualizarNota, criarNota , exibirAlunoPorEmail, exibirAlunoPorMatricula};

@@ -16,7 +16,7 @@ const discionarioDiscplina = {
 }
 
 // instanciando o dicionario que vai ficar as notas de cada materia
-let dicionarioNotas = {
+let dicionarioNotasMostrar = {
     "Teoria da Conspiração":null,
     "Programação Orientada a Apostas":null,
     "Lavagem de Dinheiro":null,
@@ -25,6 +25,17 @@ let dicionarioNotas = {
     "História":null,
     "Ciêcias":null,
     "Informática":null
+}
+
+let dicionarioNotasAlterar = {
+    "Teoria da Conspiração":[],
+    "Programação Orientada a Apostas":[],
+    "Lavagem de Dinheiro":[],
+    "Matemática":[],
+    "Português":[],
+    "História":[],
+    "Ciêcias":[],
+    "Informática":[]
 }
 
 // pegando o id do aluno que foi armazenado no local storage no forms.js
@@ -65,27 +76,29 @@ for (const nota of aluno[0].notas){
     // pegando o nome da disciplina de acordo com aquele dicionario
     const nomeDisciplina = discionarioDiscplina[nota.idDisciplina]
 
+    dicionarioNotasAlterar[nomeDisciplina].push(nota)
+
     // verificação de qual periodo é aquela nota
     if (nota.periodo === "2026.1"){
 
         // verificação se alguma nota ja foi salva naquela matéria
-        if (dicionarioNotas[nomeDisciplina] != null){
+        if (dicionarioNotasMostrar[nomeDisciplina] != null){
 
             // se sim, vai entrar como set
-            dicionarioNotas[nomeDisciplina].setNota1(nota.nota)
+            dicionarioNotasMostrar[nomeDisciplina].setNota1(nota.nota)
         } else {
 
             // se não vai chamar o construtor
-            dicionarioNotas[nomeDisciplina] = new NotasMostrar(nota.nota,null)
+            dicionarioNotasMostrar[nomeDisciplina] = new NotasMostrar(nota.nota,null,nota.idProfessor)
         }
 
     // mesma lógica de cima, porém com a nota do segundo periodo    
     } else if (nota.periodo === "2026.2"){
 
-        if (dicionarioNotas[nomeDisciplina] != null){
-            dicionarioNotas[nomeDisciplina].setNota2(nota.nota)
+        if (dicionarioNotasMostrar[nomeDisciplina] != null){
+            dicionarioNotasMostrar[nomeDisciplina].setNota2(nota.nota)
         } else {
-            dicionarioNotas[nomeDisciplina] = new NotasMostrar(null,nota.nota)
+            dicionarioNotasMostrar[nomeDisciplina] = new NotasMostrar(null,nota.nota,nota.idProfessor)
         }
     }
 }
@@ -94,30 +107,47 @@ for (const nota of aluno[0].notas){
 const tabela = document.getElementsByTagName('table');
 
 // rodando cada objeto do dicionario
-for (const [materia,nota] of Object.entries(dicionarioNotas)){
+for (const [materia, nota] of Object.entries(dicionarioNotasMostrar)) {
+    const linha = document.createElement('tr');
+    
+    // Captura o valor de materia para este escopo específico
+    const materiaAtual = materia; 
 
-    // criando a linha que sera adicionada
-    const linha = document.createElement('tr')
-    if (!professor){
-        const professorAcessado = await exibirProfessorPorId(acessoProfessor)
+    if (!professor) {
+        const professorAcessado = await exibirProfessorPorId(acessoProfessor);
+        const disciplinasDoProf = professorAcessado[0].disciplinasLecionadas;
+        
+        // Encontra o ID da disciplina atual no seu dicionário
+        const idMateriaAtual = Number(Object.keys(discionarioDiscplina).find(key => discionarioDiscplina[key] === materiaAtual));
 
-        const disciplinaLecionadas = professorAcessado[0].disciplinasLecionadas
-        const idMateriaAtual = Number(Object.keys(discionarioDiscplina).find(key => discionarioDiscplina[key] === materia))
-
-        if (disciplinaLecionadas.includes(idMateriaAtual)){
-            linha.onclick = function (){
-                editGrade.showModal()
-                localStorage.setItem("notasModificar",JSON.stringify(obsSalvar))
+        // Verifica se o professor leciona o ID daquela disciplina
+        if (disciplinasDoProf.includes(idMateriaAtual)) {
+            linha.style.cursor = 'pointer';
+            linha.onclick = function () {
+                // PRIMEIRO: Salva os dados
+                localStorage.setItem("idDisciplina", idMateriaAtual);
+                const dadosParaSalvar = dicionarioNotasAlterar[materiaAtual];
+                localStorage.setItem("notasModificar", JSON.stringify(dadosParaSalvar));
+                
+                // DEPOIS: Abre o modal e carrega
+                editGrade.showModal();
+                if (typeof carregarNotasEdit === "function") {
+                    carregarNotasEdit();
+                }
             };
-            linha.style = 'cursor:pointer'
         } else {
-            linha.setAttribute('onclick', 'alert("Essa matéria não é sua!")');
-
+            linha.onclick = () => alert("Essa matéria não é sua!");
         }
     } else if (!adm) {
-        linha.onclick = function (){
-            editGrade.showModal()
-            };
+
+        const idMateriaAtual = Number(Object.keys(discionarioDiscplina).find(key => discionarioDiscplina[key] === materiaAtual));
+        // Lógica para Admin
+        linha.onclick = function () {
+            localStorage.setItem("idDisciplina", idMateriaAtual);
+            localStorage.setItem("notasModificar", JSON.stringify(dicionarioNotasAlterar[materiaAtual]));
+            editGrade.showModal();
+            carregarNotasEdit();
+        };
     }
 
 
@@ -210,10 +240,3 @@ popUp.addEventListener('click', (e) => {
         }
 })
 
-export function carregarNotasEdit(){
-    let obsModificar = localStorage.getItem('obsModificar')
-    obsModificar = JSON.parse(obsModificar)
-    
-    const inputObs = document.querySelectorAll("#editObs form textarea")
-    inputObs[0].value = obsModificar.observacao
-}
