@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/icons/lamp-cyan.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../../styles/observations.css">
-    <link rel="stylesheet" href="../../styles/popUpAdd.css">
-    <link rel="stylesheet" href="../../styles/popUpEditarExcluir.css">  
-    <script src="../../scripts/observations.js" type="module" defer></script>
-    <script src="../../scripts/pop-up/popUpAddObservacao.js" type="module" defer></script>
-    <script src="../../scripts/pop-up/popUpEditarExcluirObs.js" type="module" defer></script>
+    <link rel="stylesheet" href="../../styles/area/observations.css">
+    <script src="../../scripts/observations/observations.js" type="module" defer></script>
+    <script type="module" src="../../scripts/observations/addObservation.js" defer></script>
+    <script type="module" src="../../scripts/observations/excludeObsevation.js"></script>
+    <script type="module" src="../../scripts/observations/editObservation.js"></script>
     <title>VladSchool</title>
     <style>
         :root {
@@ -55,51 +54,52 @@
 
     <header>
         <label for="iToggle" class="labelToggle"><img src="../../assets/icons/menu.svg"></label>
-        <button id="openPopupAdd">Adicionar</button>
+        <button onclick="addObs.showModal()">adicionar</button>
     </header>
 
     <main>
     </main>
-    <div class="overlayAdicionar" id="overlayAdicionar">
-        <div class="popupAdicionar">
-            <form>
-                <label for="obs">observação</label>
-                <textarea id="obs" name="obsevacao" placeholder="observação"></textarea>
-
-                <button type="submit" class="btn-addUp">adicionar</button>
-            </form>
-        </div>
-    </div>
-    <div class="overlayEditarExcluir" id="overlayEditarExcluir" >
-        <div class="popupEditarExcluir" >
-            <p>O que você deseja fazer?</p>
-        
-            <div class="actions">
-                <div class="action">
-                    <button class="btn delete">
-                        <img src="../../assets/images/icon-trash.png" alt="Excluir">
-                    </button>
-                    <span>Excluir</span>
-                </div>
-        
-                <div class="action">
-                    <button class="btn edit">
-                        <img src="../../assets/images/edit.png" alt="Editar">
-                    </button>
-                    <span>Editar</span>
-                </div>
+    <dialog id="addObs">
+        <form method="post">
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs" name="newObs"></textarea>
             </div>
-        </div>
-    </div>
-    <div class="overlayEditar" id="overlayEditar">
-        <div class="popupEditar">
-            <form>
-                <label for="obs">observação</label>
-                <textarea id="obs" name="obsevacao" placeholder="observação"></textarea>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
 
-                <button type="submit" class="btn-edit" id="btn-edit" >editar</button>
-            </form>
-        </div>
-    </div>
+    <dialog id="whatToDo">
+        <h3>o que você deseja fazer?</h3>
+        <section>
+            <a onclick="editObs.showModal(); carregarObs()">
+                <div><img src="../../assets/icons/edit.svg"></div>
+                <p>editar</p>
+            </a>
+            <a onclick="excludeObs.showModal()">
+                <div><img src="../../assets/icons/trash.svg"></div>
+                <p>excluir</p>
+            </a>
+        </section>
+    </dialog>
+    <dialog id="editObs" onmouseenter="whatToDo.close()">
+        <form method="post">
+            <div>
+                <label for="iObs">observação</label>
+                <textarea id="iObs" name="editObs"></textarea>
+            </div>
+            <input type="submit" value="editar">
+        </form>
+    </dialog>
+
+    <dialog id="excludeObs" onmouseenter="whatToDo.close()">
+        <form method="post">
+            <h3>tem certeza?</h3>
+            <div>
+                <input type="button" value="sim" onclick="excluirObs()">
+                <input type="button" value="não" onclick="excludeObs.close()">
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

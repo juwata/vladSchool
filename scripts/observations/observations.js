@@ -1,5 +1,5 @@
-import {  exibirAlunoPorId } from './code/aluno/ConecctionAluno.js';
-import { exibirProfessorPorId } from './code/professor/ConecctionProfessor.js'
+import {  exibirAlunoPorId } from '../code/aluno/ConecctionAluno.js';
+import { exibirProfessorPorId } from '../code/professor/ConecctionProfessor.js'
 
 // pegando o id do aluno que foi armazenado no local storage no forms.js
 const acessoAluno = localStorage.getItem('alunoId')
@@ -37,7 +37,34 @@ for (const observacao of aluno[0].observacoes){
 
     // criando a section que representa a obsevação
     const section = document.createElement('section')
-    section.classList = 'openPopupExcEdit'
+    if (!professor){
+        const professorAcessado = await exibirProfessorPorId(acessoProfessor)
+        if (professorAcessado[0].idProfessor === observacao.idProfessor){
+            section.onclick = function (){
+                whatToDo.showModal()
+                const obsSalvar = {
+                    idProfessor: observacao.idProfessor,
+                    data: observacao.data,
+                    observacao: observacao.observacao
+                };
+                localStorage.setItem("obsModificar",JSON.stringify(obsSalvar))
+            };
+            section.style = 'cursor:pointer'
+        } else {
+            section.setAttribute('onclick', 'alert("Essa observação não é sua!")');
+
+        }
+    } else if (!adm) {
+        section.onclick = function (){
+                const obsSalvar = {
+                    idProfessor: observacao.idProfessor,
+                    data: observacao.data,
+                    observacao: observacao.observacao
+                };
+                whatToDo.showModal()
+                localStorage.setItem("obsModificar",JSON.stringify(obsSalvar))
+            };
+    }
 
     // criando a div que fica o nome do professor
     const div = document.createElement('div')
@@ -49,7 +76,6 @@ for (const observacao of aluno[0].observacoes){
 
     // pegando os dados do professor para colocar no p dentro da div
     const dadosProfessor = await exibirProfessorPorId(observacao.idProfessor)
-    console.log(dadosProfessor)
     if (dadosProfessor.length === 0) {
         pNome.textContent = 'Nicola Vlad'
     } else {
@@ -68,7 +94,16 @@ for (const observacao of aluno[0].observacoes){
     section.appendChild(div)
     section.appendChild(pObservacao)
 
-    console.log(section)
     // adicioanando a tal observação
     main[0].appendChild(section)
+}
+
+const popUps = [document.getElementById('addObs'),document.getElementById('whatToDo'),document.getElementById('editObs'),document.getElementById('excludeObs')]
+
+for (const popUp of popUps){
+    popUp.addEventListener('click', (e) => {
+        if (e.target === popUp) {
+            popUp.close();
+        }
+    });
 }
