@@ -10,6 +10,26 @@ class Professor extends Usuario {
     getIdProfessor() {return this.idProfessor}
     getDisciplinasLecionadas() {return this.disciplinasLecionadas}
 
+    paraJson() {
+        try {
+            const professorJson = {
+                nome: super.getNome(),
+                nome_usuario: super.getNomeUsuario(),
+                senha: super.getSenha(),
+                email: super.getEmail(),
+                tipo: "professor",
+                dados_professor: {
+                    id_professor: this.idProfessor,
+                    disciplinaLecionadas: this.disciplinasLecionadas
+                }
+            };
+            return professorJson;
+        } catch (e) {
+            console.log(e);
+            return null;
+        }
+    }
+
     static deJson(jsonDoc=JSON){
         try{
             const id = jsonDoc._id ? (jsonDoc._id.$oid || jsonDoc._id) : null;

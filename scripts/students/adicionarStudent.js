@@ -26,7 +26,7 @@ async function addObs(evento){
         window.location.href = `${nomePagina}.html`; 
 
     }else {
-        alert("Erro ao criar observação!")
+        alert("Erro ao criar aluno!")
     }
 }
 

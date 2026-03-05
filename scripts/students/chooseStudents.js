@@ -1,4 +1,4 @@
-import { exibirAlunoPorIndex } from './code/aluno/ConecctionAluno.js'
+import { exibirAlunoPorIndex } from '../code/aluno/ConecctionAluno.js'
 
 // pegando o id do professor que foi armazenado no local storage no forms.js
 const idSalvo = Number(localStorage.getItem('professorId'));
@@ -12,9 +12,6 @@ if ((!idSalvo || idSalvo === "undefined") && (!idAdm || idAdm === "undefined")) 
 
 const nomePagina = document.querySelector('.asideHeader div p')
 nomePagina.innerText = localStorage.getItem('nome') 
-
-const form = document.createElement('form')
-form.innerHTML= '<label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label><input type="text" id="nome do aluno" placeholder="nome do aluno"><select id="sTurmas"></select>'
 
 async function retornarLista(){
     let indice =0
@@ -181,6 +178,7 @@ main.addEventListener('click', (e) => {
     }
 });
 
+console.log(idAdm )
 if (!(!idAdm || idAdm === "undefined")){
     const popUp = document.getElementById('addStud')
 

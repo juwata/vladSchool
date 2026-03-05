@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/icons/lamp-red.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/area/choose.css">
+    <script type="module" src="../../scripts/prof/chooseProf.js" defer></script>
+    <script type="module" src="../../scripts/prof/addProf.js" defer></script>
+    <script type="module" src="../../scripts/prof/editProf.js" defer></script>
+    <title>VladSchool</title>
+</head>
+<body>
+    <input type="checkbox" id="iToggle" hidden>
+    <aside>
+        <section class="asideHeader">
+            <div>
+                <h2>PROFESSOR</h2>
+                <p></p>
+            </div>
+            <label for="iToggle"><img src="../../assets/icons/toggle.svg"></label>
+        </section>
+
+        <nav>
+            <h2>GERAL</h2>
+            <a href="chooseNotas.html">
+                <img src="../../assets/icons/aside.svg">
+                <p>notas</p>
+            </a>
+            <a href="chooseObservations.html">
+                <img src="../../assets/icons/aside.svg">
+                <p>observações</p>
+            </a>
+            <a href="teachers.html" style="background-color: var(--mainColorT);">
+                <img src="../../assets/icons/aside.svg">
+                <p>professores</p>
+            </a>
+            
+            <a href="dashboard.html" >
+                <img src="../../assets/icons/aside.svg">
+                <p>dashboard</p>
+            </a>
+        </nav>
+
+        <section class="asideFooter">
+            <img src="../../assets/icons/lamp-red.svg">
+            <h1>VladSchool</h1>
+        </section>
+    </aside>
+
+    <main>
+        <header>
+            <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
+            <input type="text" id="profName" placeholder="nome do professor">
+            <button onclick="addProf.showModal()">adicionar</button>
+        </header>
+        
+        <section class="table">
+            
+        </section>
+    </main>
+
+    <dialog id="addProf">
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iName" name="iName" autocapitalize="" placeholder="nome e sobrenome" autocomplete="name">
+            </div>
+            <div>
+                <label for="iEmail">email</label>
+                <input type="email" id="iEmail" name="iEmail" placeholder="email@email.com" autocomplete="email">
+            </div>
+            <div>
+                <label for="iPasswd">senha</label>
+                <input type="password" id="iPasswd" name="iPasswd" placeholder="********" autocomplete="new-password">
+            </div>
+            <div>
+                <label for="iSubj">matérias</label>
+                <select id="iSubj" multiple size="8" name="iMaterias">
+                    <option value="Teoria da Conspiração">• Teoria da Conspiração</option>
+                    <option value="Programação Orientada a Apostas">• Programação Orientada a Apostas</option>
+                    <option value="Lavagem de Dinheiro">• Lavagem de Dinheiro</option>
+                    <option value="Matemática">• Matemática</option>
+                    <option value="Português">• Português</option>
+                    <option value="História">• História</option>
+                    <option value="Ciêcias">• Ciêcias</option>
+                    <option value="Informática">• Informática</option>
+                </select>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
+    <dialog id="editProf">
+        <form method="post">
+            <div>
+                <label for="iName">nome</label>
+                <input type="text" id="iNameEdit" name="iName" autocapitalize="" placeholder="nome e sobrenome" autocomplete="name">
+            </div>
+            <div>
+                <label for="iEmail">email</label>
+                <input type="email" id="iEmailEdit" name="iEmail" placeholder="email@email.com" autocomplete="email">
+            </div>
+            <div>
+                <label for="iPasswd">senha</label>
+                <input type="password" id="iPasswdEdit" name="iPasswd" placeholder="********" autocomplete="new-password">
+            </div>
+            <div>
+                <label for="iSubj">matérias</label>
+                <select id="iSubjEdit" multiple size="8" name="iMaterias">
+                    <option value="Teoria da Conspiração">• Teoria da Conspiração</option>
+                    <option value="Programação Orientada a Apostas">• Programação Orientada a Apostas</option>
+                    <option value="Lavagem de Dinheiro">• Lavagem de Dinheiro</option>
+                    <option value="Matemática">• Matemática</option>
+                    <option value="Português">• Português</option>
+                    <option value="História">• História</option>
+                    <option value="Ciêcias">• Ciêcias</option>
+                    <option value="Informática">• Informática</option>
+                </select>
+            </div>
+            <input type="submit" value="adicionar">
+        </form>
+    </dialog>
+
+    <script>
+        document.documentElement.style.setProperty('--mainColor', '#FF383C')
+        document.documentElement.style.setProperty('--mainColorT', '#FF383C33')
+    </script>
+</body>
+</html>

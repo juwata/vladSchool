@@ -185,4 +185,76 @@ async function listarProfessores() {
     }
     
 }
-export { exibirProfessorPorId, logarProfessor, exibirProfessorPorEmail, listarProfessores};
+
+async function criarProfessor(professor=Professor) {
+    try {
+        professor = professor.paraJson();
+
+        console.log(JSON.stringify(professor))
+        //metodo que que envia e conecta no backend para criar um professor'
+        const resposta = await fetch(`${url}/app/professor/criar`, {
+            method: 'POST',
+            headers: {
+                //seta o tipo de conteudo para json, para o backend entender que é um json
+                'Content-Type': 'application/json',
+            },
+            //transforma para string o json professor
+            body: JSON.stringify(professor)
+        });
+
+        // Verificar se a resposta foi ok
+        if (!resposta.ok) {
+            throw new Error(`Erro HTTP: ${resposta.status}`);
+        }
+
+        // Converter resposta para json
+        const dadosResposta = await resposta.json();
+        console.log('sucesso:', dadosResposta);
+
+
+        //retorna os dados da resposta para o frontend
+        return dadosResposta;
+
+        //try e catch, igual o java
+    } catch (e) {
+        //mensagem de erro, como no front é menos comum n tem um tratamento completo
+        console.error('erro ao enviar:', e);
+    }
+
+}
+async function atualizarProfessor(id=String, professor=Professor) {
+    try {
+        professor = professor.paraJson();
+
+        //metodo que que envia e conecta no backend para atualizar um professor
+        const resposta = await fetch(`${url}app/professor/atualizar?_id=${id}`, {
+            method: 'POST',
+            headers: {
+                //seta o tipo de conteudo para json, para o backend entender que é um json
+                'Content-Type': 'application/json',
+            },
+            //transforma para string o json professor
+            body: JSON.stringify(professor)
+        });
+
+        // Verificar se a resposta foi ok
+        if (!resposta.ok) {
+            throw new Error(`Erro HTTP: ${resposta.status}`);
+        }
+
+        // Converter resposta para json
+        const dadosResposta = await resposta.json();
+        console.log('sucesso:', dadosResposta);
+
+
+        //retorna os dados da resposta para o frontend
+        return dadosResposta;
+
+        //try e catch, igual o java
+    } catch (e) {
+        //mensagem de erro, como no front é menos comum n tem um tratamento completo
+        console.error('erro ao enviar:', e);
+    }
+
+}
+export { exibirProfessorPorId, logarProfessor, exibirProfessorPorEmail, listarProfessores, criarProfessor, atualizarProfessor};
