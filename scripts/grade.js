@@ -120,8 +120,42 @@ for (const [materia, nota] of Object.entries(dicionarioNotasMostrar)) {
         // Encontra o ID da disciplina atual no seu dicionário
         const idMateriaAtual = Number(Object.keys(discionarioDiscplina).find(key => discionarioDiscplina[key] === materiaAtual));
 
-        // Verifica se o professor leciona o ID daquela disciplina
-        if (disciplinasDoProf.includes(idMateriaAtual)) {
+
+        if (dicionarioNotasAlterar[materia].length != 0 ){
+            console.log(dicionarioNotasAlterar[materia][0].idProfessor,acessoProfessor)
+            if (dicionarioNotasAlterar[materia][0].idProfessor == acessoProfessor){
+                console.log('ola')
+                linha.onclick = function () {
+                    // PRIMEIRO: Salva os dados
+                    localStorage.setItem("idDisciplina", idMateriaAtual);
+                    const dadosParaSalvar = dicionarioNotasAlterar[materiaAtual];
+                    localStorage.setItem("notasModificar", JSON.stringify(dadosParaSalvar));
+                    
+                    // DEPOIS: Abre o modal e carrega
+                    editGrade.showModal();
+                    if (typeof carregarNotasEdit === "function") {
+                        carregarNotasEdit();
+                    }
+                };
+            } else if (disciplinasDoProf.includes(idMateriaAtual) &&  dicionarioNotasAlterar[materia][0].idProfessor == 0) {
+                console.log('vix')
+                linha.style.cursor = 'pointer';
+                linha.onclick = function () {
+                    // PRIMEIRO: Salva os dados
+                    localStorage.setItem("idDisciplina", idMateriaAtual);
+                    const dadosParaSalvar = dicionarioNotasAlterar[materiaAtual];
+                    localStorage.setItem("notasModificar", JSON.stringify(dadosParaSalvar));
+                    
+                    // DEPOIS: Abre o modal e carrega
+                    editGrade.showModal();
+                    if (typeof carregarNotasEdit === "function") {
+                        carregarNotasEdit();
+                    }
+                };
+            } else {
+                linha.onclick = () => alert("Essa matéria não é sua!");
+            }
+        } else if (disciplinasDoProf.includes(idMateriaAtual)) {
             linha.style.cursor = 'pointer';
             linha.onclick = function () {
                 // PRIMEIRO: Salva os dados
