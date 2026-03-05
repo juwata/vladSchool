@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+::-webkit-scrollbar {display: none}
+::selection {background: #7b3ff27c}
+
+:root {
+    --color00: #fff;
+    --color01: #7B3FF2;
+    --bgColor01: #000;
+    --bgColor02: #121212;
+    --bgColor03: #232323;
+
+    --fontText: 'Archivo';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    color: var(--color00);
+    font-family: var(--fontText);
+    text-decoration: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    border: 0;
+}
+
+body {
+    background: var(--bgColor01);
+    width: 90dvw; height: 100dvh;
+    margin: 0 auto;
+}
+
+
+/* --- main config ------ */
+
+section {
+    margin: 50px 0 60px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+input {
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+
+    transition: 300ms;
+}
+
+input:focus, input:not([type="submit"]):focus {
+    outline: none;
+    border: 2px solid var(--color01);
+    box-shadow: 0 16px 48px rgba(123, 63, 242, 0.2);
+
+}
+
+input:not([type="submit"]) {
+    background: #0A0A0A;
+    border: 2px solid var(--bgColor03);
+}
+
+input[type="submit"] {
+    background: var(--color01);
+    margin-bottom: 20px;
+}
+
+input[type="name"] {text-transform: capitalize;}
+input[type="email"] {text-transform: lowercase;}
+
+
+a.forgot {
+    color: #7B3FF2;
+    text-decoration: underline;
+}
+
+a.signup {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 25dvh;
+    }
+
+    input {
+        width: 550px;
+        height: 70px;
+    }
+
+    label {
+        display: block;
+    }
+
+    a.forgot {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    a.signup {
+        position: initial;
+        border: 1px solid var(--color00);
+        padding: 20px;
+    }
+}
