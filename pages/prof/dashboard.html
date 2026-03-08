@@ -1,86 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../assets/icons/lamp-cyan.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../../styles/dashboard.css">
-    <title>VladSchool</title>
-    <style>
-        :root {
-            --mainColor: #00C0E8;
-            --mainColorT: #00C0E833;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dashboard Acadêmico</title>
+
+    <link rel="stylesheet" href="../../styles/area/dashboard.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="../../scripts/dashboard.js" type="module" defer></script>
+
 </head>
-<body>
-    <input type="checkbox" id="iToggle" hidden checked>
-    <aside>
-        <section class="asideHeader">
-            <div>
-                <h2>PROFESSOR</h2>
-                <p>Ana Souza</p>
-            </div>
-            <label for="iToggle"><img src="../../assets/icons/toggle.svg"></label>
-        </section>
 
-        <nav>
-            <h2>GERAL</h2>
-            <a href="chooseNotas.html">
-                <img src="../../assets/icons/aside.svg">
-                <p>notas</p>
-            </a>
-            
-            <a href="chooseObservations.html">
-                <img src="../../assets/icons/aside.svg">
-                <p>observações</p>
-            </a>
-            
-            <a href="dashboard.html" style="background-color: var(--mainColorT);">
-                <img src="../../assets/icons/aside.svg">
-                <p>dashboard</p>
-            </a>
-        </nav>
-
-        <section class="asideFooter">
-            <img src="../../assets/icons/lamp-cyan.svg">
-            <h1>VladSchool</h1>
-        </section>
-    </aside>
+<body class="theme-professor">
 
     <header>
-        <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
+        <h1>Dashboard Acadêmico</h1>
 
+        <div>
+            <select id="filtroTurma">
+                <option value="ALL">Todas as Turmas</option>
+                <option value="1A">1º Ano A</option>
+                <option value="1B">1º Ano B</option>
+                <option value="2A">2º Ano A</option>
+                <option value="2B">2º Ano B</option>
+                <option value="3A">3º Ano A</option>
+                <option value="3B">3º Ano B</option>
+            </select>
+
+            <a href="chooseNotas.html">Notas</a>
+            <a href="chooseObservations.html">observações</a>
+        </div>
     </header>
 
+    <section class="kpis">
+        <div class="kpi">
+            <h3>Total de Alunos</h3>
+            <p id="kpiTotal">0</p>
+        </div>
+        <div class="kpi">
+            <h3>Média Geral</h3>
+            <p id="kpiMedia">0.0</p>
+        </div>
+        <div class="kpi">
+            <h3>% Críticos</h3>
+            <p id="kpiCriticos">0%</p>
+        </div>
+        <div class="kpi">
+            <h3>% Completo</h3>
+            <p id="kpiCompletude">0%</p>
+        </div>
+    </section>
+
     <main>
-        <section>
-            <h2>TAXA DE APROVAÇÃO</h2>
-        </section>
 
-        <section>
-            <h2>TAXA DE APROVAÇÃO</h2>
-        </section>
+        <div class="row">
+            <div class="card">
+                <h3>Situação dos Alunos</h3>
+                <div class="chart-box">
+                    <canvas id="chartSituacao"></canvas>
+                </div>
+            </div>
 
-        <section>
-            <h2>TAXA DE APROVAÇÃO</h2>
-        </section>
+            <div class="card">
+                <h3>Completude das Notas</h3>
+                <div class="chart-box">
+                    <canvas id="chartCompletude"></canvas>
+                </div>
+            </div>
+        </div>
 
-        <section>
-            <h2>TAXA DE APROVAÇÃO</h2>
-        </section>
+        <div class="row">
+            <div class="card">
+                <h3>Top 5 Melhores Médias</h3>
+                <div class="chart-box">
+                    <canvas id="chartTop"></canvas>
+                </div>
+            </div>
 
-        <section>
-            <h2>TAXA DE APROVAÇÃO</h2>
-        </section>
+            <div class="card">
+                <h3>Notas por Aluno</h3>
+                <select id="selectAluno">
+                    <option value="">Selecione um aluno</option>
+                </select>
+                <div class="chart-box">
+                    <canvas id="chartNotas"></canvas>
+                </div>
+            </div>
+        </div>
 
-        <section>
-            <h2>TAXA DE APROVAÇÃO</h2>
-        </section>
+        <div class="card">
+            <h3>Alunos em Situação Crítica</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Turma</th>
+                        <th>N1</th>
+                        <th>N2</th>
+                        <th>Média</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCriticos"></tbody>
+            </table>
+        </div>
+
     </main>
-    <script>
-        document.documentElement.style.setProperty('--mainColor', '#00C0E8')
-        document.documentElement.style.setProperty('--mainColorT', '#00C0E833')
-    </script>
 </body>
+
 </html>
