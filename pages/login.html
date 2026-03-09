@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/icons/lamp-purple.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/forms.css">
+    <script src="../scripts/forms.js" type="module" defer></script>
     <title>VladSchool | Login</title>
 </head>
 <body>
@@ -15,24 +16,24 @@
         </div>
         <a href="signup.html" class="signup">novo aqui? faça o seu cadastro</a>
     </section>
-
     <form method="post">
         <div>
             <label for="iEmail">email</label>
             <input type="email" id="iEmail" placeholder="seu@email.com" required autocomplete="email" autofocus>
+            <label for="iEmail">email</label>
+            <input type="email" id="iEmail" name="iEmail" placeholder="seu@email.com" required autocomplete="email" autofocus>
         </div>
-
         <div>
             <label for="iPasswd">senha</label>
             <input type="password" id="iPasswd" placeholder="senha" required autocomplete="current-password">
+            <label for="iPasswd">senha</label>
+            <input type="password" id="iPasswd" name="iPasswd" placeholder="senha" required autocomplete="current-password" >
         </div>
-
         <div>
             <input type="submit" value="logar">
-            <a href="signup.html" class="forgot">esqueceu a senha?</a>
+            <a href="enviarEmail.html" class="forgot">esqueceu a senha?</a>
         </div>
     </form>
 
-    <script src="/scripts/forms.js"></script>
 </body>
 </html>

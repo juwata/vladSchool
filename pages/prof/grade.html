@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/icons/lamp-cyan.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../styles/area/grade.css">
+    <script src="../../scripts/grade.js" type="module" defer></script>
+    <script type="module" src="../../scripts/nota/editarNota.js" defer></script>
     <title>VladSchool</title>
+    <style>
+        :root {
+            --mainColor: #00C0E8;
+            --mainColorT: #00C0E833;
+        }
+    </style>
 </head>
 <body>
     <input type="checkbox" id="iToggle" hidden checked>
@@ -13,25 +21,23 @@
         <section class="asideHeader">
             <div>
                 <h2>PROFESSOR</h2>
-                <p>Ana Souza</p>
+                <p></p>
             </div>
             <label for="iToggle"><img src="../../assets/icons/toggle.svg"></label>
         </section>
 
         <nav>
             <h2>GERAL</h2>
-            <a href="grade.html" style="background-color: var(--mainColorT);">
+            <a href="chooseNotas.html" style="background-color: var(--mainColorT);">
                 <img src="../../assets/icons/aside.svg">
-                <p>alunos</p>
+                <p>notas</p>
             </a>
-
             
-            <a href="pre-obs.html">
+            <a href="chooseObservations.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>observações</p>
             </a>
-            
-            <a href="dashboard.html">
+            <a href="dashboard.html" >
                 <img src="../../assets/icons/aside.svg">
                 <p>dashboard</p>
             </a>
@@ -44,11 +50,10 @@
     </aside>
 
     <main>
-        <header>
+        <form>
             <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
-        </header>
-
-        <h1>João Silva</h1>
+        </form>
+        
         <table>
             <tr class="thead">
                 <th>matéria</th>
@@ -57,48 +62,20 @@
                 <th>média</th>
                 <th>status</th>
             </tr>
-            <tr ondblclick="editGrade.showModal()">
-                <td>aaaa</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>aaaa</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>aaaa</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-           
         </table>
     </main>
-
     <dialog id="editGrade">
         <form method="post">
             <div>
                 <label for="iN1">nota 1</label>
-                <input type="number" id="iN1" min="0" max="10">
+                <input type="number" id="iN1" name="iN1" step="0.1" min="0" max="10">
             </div>
             <div>
                 <label for="iN2">nota 2</label>
-                <input type="number" id="iN2" min="0" max="10">
+                <input type="number" id="iN2" name="iN2" step="0.1" min="0" max="10">
             </div>
             <input type="submit" value="adicionar">
         </form>
     </dialog>
-
-    <script>
-        document.documentElement.style.setProperty('--mainColor', '#00C0E8')
-        document.documentElement.style.setProperty('--mainColorT', '#00C0E833')
-    </script>
 </body>
 </html>

@@ -5,37 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/icons/lamp-red.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../styles/area/observations.css">
+    <script src="../../scripts/observations/observations.js" type="module" defer></script>
+    <script type="module" src="../../scripts/observations/addObservation.js" defer></script>
+    <script type="module" src="../../scripts/observations/excludeObsevation.js"></script>
+    <script type="module" src="../../scripts/observations/editObservation.js"></script>
     <title>VladSchool</title>
+    <style>
+        :root {
+            --mainColor: #FF383C;
+            --mainColorT: #FF383C33;
+        }
+    </style>
 </head>
 <body>
     <input type="checkbox" id="iToggle" hidden checked>
     <aside>
         <section class="asideHeader">
             <div>
-                <h2>PROFESSOR</h2>
-                <p>Ana Souza</p>
+                <h2>ADMINISTRADOR</h2>
+                <p></p>
             </div>
             <label for="iToggle"><img src="../../assets/icons/toggle.svg"></label>
         </section>
 
         <nav>
             <h2>GERAL</h2>
-            <a href="choose.html">
+            <a href="chooseNotas.html" >
                 <img src="../../assets/icons/aside.svg">
-                <p>alunos</p>
+                <p>notas</p>
             </a>
-
+            <a href="chooseObservations.html" style="background-color: var(--mainColorT);">
+                <img src="../../assets/icons/aside.svg">
+                <p>observações</p>
+            </a>
             <a href="prof.html">
                 <img src="../../assets/icons/aside.svg">
                 <p>professores</p>
             </a>
             
-            <a href="pre-obs.html" style="background-color: var(--mainColorT);">
-                <img src="../../assets/icons/aside.svg">
-                <p>observações</p>
-            </a>
-            
-            <a href="dashboard.html">
+            <a href="dashboard.html" >
                 <img src="../../assets/icons/aside.svg">
                 <p>dashboard</p>
             </a>
@@ -46,60 +54,19 @@
             <h1>VladSchool</h1>
         </section>
     </aside>
-    
+
+    <header>
+        <label for="iToggle" class="labelToggle"><img src="../../assets/icons/menu.svg"></label>
+        <button onclick="addObs.showModal()">adicionar</button>
+    </header>
+
     <main>
-        <header>
-            <label for="iToggle" class="labelToggle"> <img src="../../assets/icons/menu.svg"></label>
-            <h1>João Souza</h1>
-            <button onclick="addObs.showModal()">adicionar</button>
-        </header>
-
-        <section ondblclick="whatToDo.showModal()">
-            <div>
-                <h2>PROFESSOR</h2>
-                <p>Ana Souza</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quisquam culpa ut reiciendis temporibus repellat, illum, minus aliquid laboriosam iusto earum enim eius rerum voluptates praesentium quidem ipsum laudantium natus ducimus, sint cum error recusandae! Repudiandae voluptates earum odio! Sit doloribus nisi at qui reiciendis officia a, soluta eum hic?</p>
-        </section>
-
-        <section>
-            <div>
-                <h2>DIRETOR</h2>
-                <p>Nicolas Vlad</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quisquam culpa ut reiciendis temporibus repellat, illum, minus aliquid laboriosam iusto earum enim eius rerum voluptates praesentium quidem ipsum laudantium natus ducimus, sint cum error recusandae! Repudiandae voluptates earum odio! Sit doloribus nisi at qui reiciendis officia a, soluta eum hic?</p>
-        </section>
-
-        <section>
-            <div>
-                <h2>PROFESSOR</h2>
-                <p>Ana Souza</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quisquam culpa ut reiciendis temporibus repellat, illum, minus aliquid laboriosam iusto earum enim eius rerum voluptates praesentium quidem ipsum laudantium natus ducimus, sint cum error recusandae! Repudiandae voluptates earum odio! Sit doloribus nisi at qui reiciendis officia a, soluta eum hic?</p>
-        </section>
-
-        <section>
-            <div>
-                <h2>DIRETOR</h2>
-                <p>Nicolas Vlad</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quisquam culpa ut reiciendis temporibus repellat, illum, minus aliquid laboriosam iusto earum enim eius rerum voluptates praesentium quidem ipsum laudantium natus ducimus, sint cum error recusandae! Repudiandae voluptates earum odio! Sit doloribus nisi at qui reiciendis officia a, soluta eum hic?</p>
-        </section>
-
-        <section>
-            <div>
-                <h2>PROFESSOR</h2>
-                <p>Ana Souza</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quisquam culpa ut reiciendis temporibus repellat, illum, minus aliquid laboriosam iusto earum enim eius rerum voluptates praesentium quidem ipsum laudantium natus ducimus, sint cum error recusandae! Repudiandae voluptates earum odio! Sit doloribus nisi at qui reiciendis officia a, soluta eum hic?</p>
-        </section>
     </main>
-
     <dialog id="addObs">
         <form method="post">
             <div>
                 <label for="iObs">observação</label>
-                <textarea id="iObs"></textarea>
+                <textarea id="iObs" name="newObs"></textarea>
             </div>
             <input type="submit" value="adicionar">
         </form>
@@ -108,7 +75,7 @@
     <dialog id="whatToDo">
         <h3>o que você deseja fazer?</h3>
         <section>
-            <a onclick="editObs.showModal()">
+            <a onclick="editObs.showModal(); carregarObs()">
                 <div><img src="../../assets/icons/edit.svg"></div>
                 <p>editar</p>
             </a>
@@ -118,14 +85,13 @@
             </a>
         </section>
     </dialog>
-    
     <dialog id="editObs" onmouseenter="whatToDo.close()">
         <form method="post">
             <div>
                 <label for="iObs">observação</label>
-                <textarea id="iObs"></textarea>
+                <textarea id="iObs" name="editObs"></textarea>
             </div>
-            <input type="submit" value="adicionar">
+            <input type="submit" value="editar">
         </form>
     </dialog>
 
@@ -133,16 +99,10 @@
         <form method="post">
             <h3>tem certeza?</h3>
             <div>
-                <input type="button" value="sim">
+                <input type="button" value="sim" onclick="excluirObs()">
                 <input type="button" value="não" onclick="excludeObs.close()">
             </div>
         </form>
     </dialog>
-
-    <script>
-        document.documentElement.style.setProperty('--mainColor', '#FF383C')
-        document.documentElement.style.setProperty('--mainColorT', '#FF383C33')
-    </script>
-
 </body>
 </html>

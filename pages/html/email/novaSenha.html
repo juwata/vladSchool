@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/lamp-purple.svg" type="image/x-icon">
+    <link rel="stylesheet" href="novaSenha.css">
+    <title>VladSchool | Alterar Senha</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h1 style="margin-bottom: 10px;">Alterar Senha</h1>
+            <p class="signup" id="rec">Digite sua nova senha</p>
+        </div>
+    </section>
+
+    
+    <form method="get" action="" onsubmit="alterarSenha(event)">    
+        <div>
+            <label for="iNovaSenha">nova senha</label>
+            <input type="password" id="iNovaSenha" placeholder="••••••••" required minlength="6">
+        </div>
+
+        <div>
+            <label for="iConfirmarSenha">confirmar senha</label>
+            <input type="password" id="iConfirmarSenha" placeholder="••••••••" required minlength="6">
+        </div>
+
+        <div>
+            <input type="submit" value="alterar senha" id="btnSubmit">
+        </div>
+
+        <!-- Loading simples -->
+        <div id="loadingContainer" style="display: none; text-align: center; margin-top: 20px;">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px; color: #7B3FF2;">Alterando senha...</p>
+        </div>
+    </form>
+
+    <a href="./login.html" class="forgot">Voltar ao login</a>
+
+    <script type="module" src="./novaSenha.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/lamp-purple.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/enviarEmail.css">
+    <title>VladSchool | Login</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h1 style="margin-bottom: 10px;">Recuperar Senha</h1>
+            <p  class="signup" id="rec">Digite seu email para enviar o código de recuperação</p>
+        </div>
+    </section>
+
+    
+    <form method="get" action="" onsubmit="enviarEmail(event)">    
+        <div>
+            <label for="iEmail">email</label>
+            <input type="email" id="iEmail" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+
+        <div>
+            <input type="submit" value="enviar Email" id="btnSubmit">
+        </div>
+
+        <!-- Loading simples -->
+        <div id="loadingContainer" style="display: none; text-align: center; margin-top: 20px;">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px; color: #7B3FF2;">Enviando código...</p>
+        </div>
+    </form>
+
+    <script type="module" src="../scripts/enviarEmail.js"></script>
+</body>
+</html>

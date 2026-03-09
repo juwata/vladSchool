@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Dashboard Acadêmico</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="dashboard.js" type="module"></script>
+
+</head>
+
+<body class="theme-professor">
+
+<header>
+  <h1>Dashboard Acadêmico</h1>
+
+  <div>
+    <select id="filtroTurma">
+      <option value="ALL">Todas as Turmas</option>
+      <option value="1A">1º Ano A</option>
+      <option value="1B">1º Ano B</option>
+      <option value="2A">2º Ano A</option>
+      <option value="2B">2º Ano B</option>
+      <option value="3A">3º Ano A</option>
+      <option value="3B">3º Ano B</option>
+    </select>
+
+    <button id="btnProfessor">Professor</button>
+    <button id="btnAdmin">Admin</button>
+  </div>
+</header>
+
+<section class="kpis">
+  <div class="kpi"><h3>Total de Alunos</h3><p id="kpiTotal">0</p></div>
+  <div class="kpi"><h3>Média Geral</h3><p id="kpiMedia">0.0</p></div>
+  <div class="kpi"><h3>% Críticos</h3><p id="kpiCriticos">0%</p></div>
+  <div class="kpi"><h3>% Completo</h3><p id="kpiCompletude">0%</p></div>
+</section>
+
+<main>
+
+<div class="row">
+  <div class="card">
+    <h3>Situação dos Alunos</h3>
+    <div class="chart-box">
+      <canvas id="chartSituacao"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Completude das Notas</h3>
+    <div class="chart-box">
+      <canvas id="chartCompletude"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card">
+    <h3>Top 5 Melhores Médias</h3>
+    <div class="chart-box">
+      <canvas id="chartTop"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Notas por Aluno</h3>
+    <select id="selectAluno">
+      <option value="">Selecione um aluno</option>
+    </select>
+    <div class="chart-box">
+      <canvas id="chartNotas"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+<h3>Alunos em Situação Crítica</h3>
+<table>
+<thead>
+<tr><th>Aluno</th><th>Turma</th><th>N1</th><th>N2</th><th>Média</th></tr>
+</thead>
+<tbody id="tabelaCriticos"></tbody>
+</table>
+</div>
+
+</main>
+</body>
+</html>
