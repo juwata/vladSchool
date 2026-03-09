@@ -1,6 +1,6 @@
-import { enviarEmailAluno, exibirAlunoPorEmail} from "../scripts/code/aluno/ConecctionAluno.js";
-import { enviarEmailAdm, exibirAdmPorEmail } from "../scripts/code/adm/ConecctionAdm.js";
-import { enviarEmailProfessor, exibirProfessorPorEmail } from "../scripts/code/professor/ConecctionProfessor.js";
+import { enviarEmailAluno, exibirAlunoPorEmail} from "../../aluno/ConecctionAluno.js";
+import { enviarEmailAdm, exibirAdmPorEmail } from "../../adm/ConnectionAdm.js";
+import { enviarEmailProfessor, exibirProfessorPorEmail } from "../../professor/ConecctionProfessor.js";
 
 async function verificarEmail(email){
     try {

@@ -1,6 +1,6 @@
-import {recuperarAluno} from "../scripts/code/aluno/ConecctionAluno.js";
-import {recuperarAdm} from "../scripts/code/adm/ConecctionAdm.js";
-import {recuperarProfessor} from "../scripts/code/professor/ConecctionProfessor.js";
+import {recuperarAluno} from "../../aluno/ConecctionAluno.js";
+import {recuperarAdm} from "../../adm/ConnectionAdm.js";
+import {recuperarProfessor} from "../../professor/ConecctionProfessor.js";
 
 const email = sessionStorage.getItem('emailRecuperacao');
 const tipo = sessionStorage.getItem('tipoUsuario');

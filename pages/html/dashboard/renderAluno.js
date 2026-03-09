@@ -1,4 +1,4 @@
-import { exibirAlunoPorSerie } from "../scripts/code/aluno/ConecctionAluno.js";
+import { exibirAlunoPorSerie } from "../../aluno/ConecctionAluno.js";
 async function criarObjetoTurmas() {
     try {
         // Array com todas as séries/turmas que existem no banco
