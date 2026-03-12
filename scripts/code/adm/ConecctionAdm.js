@@ -60,6 +60,7 @@ async function exibirAdmPorEmail(email=String) {
             throw new Error(`Erro HTTP: ${resposta.status}`);
         }
 
+        console.log(`${url}app/adm/exibir?tipo=${tipo}&email=${(email)}`)
         //converte a resposta para json
         const dadosResposta = await resposta.json();
         //separa da resposta de sucesso para resposta de adm
@@ -88,6 +89,7 @@ async function exibirAdmPorEmail(email=String) {
 
         }
         else{
+            console.log('ola')
             return null;
         }
     } catch (e) {

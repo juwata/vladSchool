@@ -178,7 +178,6 @@ main.addEventListener('click', (e) => {
     }
 });
 
-console.log(idAdm )
 if (!(!idAdm || idAdm === "undefined")){
     const popUp = document.getElementById('addStud')
 

@@ -56,6 +56,7 @@ form.addEventListener('submit', async (event) => {
 
         // se der certo pega os dados dele através do email
         const adm = await exibirAdmPorEmail(email)
+        console.log(adm)
 
         // seta no localStorage algumas variaveis que serão útil para chamar funções e na pagina de welcome
         localStorage.setItem('admId',adm[0].id)

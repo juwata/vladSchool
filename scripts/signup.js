@@ -26,18 +26,20 @@ form.addEventListener('submit', async (event) => {
     console.log(aluno[0].matricula)
 
     // verificando se esse aluno ja tem email e senha
-    if ((aluno[0].email == "undefined" || aluno[0].email == null) && (aluno[0].senha == "undefined" || aluno[0].senha == null)){
-
-        aluno[0].setEmail(email)
-        aluno[0].setSenha(senha)
-
-        atualizarAluno(aluno[0].id,aluno[0])
-
-        window.location.href = 'login.html';
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(senha)){
+        alert("A senha deve conter pelo menos 8 caracteres, letras maiúsculas, minúsculas, números e caracteres especiais.");
     } else {
-        alert("Matricula já cadastrada no sistema!");
-        
+        if ((aluno[0].email == "undefined" || aluno[0].email == null) && (aluno[0].senha == "undefined" || aluno[0].senha == null)){
+
+            aluno[0].setEmail(email)
+            aluno[0].setSenha(senha)
+    
+            atualizarAluno(aluno[0].id,aluno[0])
+    
+            window.location.href = 'login.html';
+        } else {
+            alert("Essa matricula já foi cadastrada!");
+            
+        }
     }
-
-
 })
