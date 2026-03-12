@@ -236,6 +236,10 @@ dialog::backdrop {
     color: #000;
 }
 
+#whatToDo img{
+    width: 20px;
+}
+
 input[value="sim"] {background: #05ec3b}
 input[value="não"] {background: #FF383C}
 

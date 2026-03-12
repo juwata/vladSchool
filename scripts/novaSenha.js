@@ -57,10 +57,10 @@ window.alterarSenha = async function(event) {
     }
     
     // Valida tamanho mínimo
-    if (novaSenha.length < 6) {
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(novaSenha)) {
         const popup = document.createElement('div');
         popup.className = 'popup-erro';
-        popup.textContent = 'A senha deve ter no mínimo 6 caracteres';
+        popup.textContent = 'A senha deve conter pelo menos 8 caracteres, letras maiúsculas, minúsculas, números e caracteres especiais.';
         document.body.appendChild(popup);
         setTimeout(() => popup.remove(), 3000);
         return;
@@ -79,8 +79,11 @@ window.alterarSenha = async function(event) {
         return;
     }
     
+    
     btnSubmit.style.display = 'none';
     loadingContainer.style.display = 'block';
+
+    
     
     try {
         await alterarSenhaBack(email, novaSenha);
